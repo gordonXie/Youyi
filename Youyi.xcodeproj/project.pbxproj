@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */; };
 		8E6256A71A08A12100AC79B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A61A08A12100AC79B7 /* main.m */; };
 		8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A91A08A12100AC79B7 /* AppDelegate.m */; };
 		8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256AC1A08A12100AC79B7 /* ViewController.m */; };
@@ -82,6 +83,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8E1C52121A120B39005A24C5 /* PurposeTimeSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurposeTimeSetViewController.h; sourceTree = "<group>"; };
+		8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurposeTimeSetViewController.m; sourceTree = "<group>"; };
 		8E6256A11A08A12100AC79B7 /* Youyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6256A51A08A12100AC79B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6256A61A08A12100AC79B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -524,6 +527,8 @@
 			children = (
 				8EF745271A0B0B89005B47A8 /* PurposeCreateViewController.h */,
 				8EF745281A0B0B89005B47A8 /* PurposeCreateViewController.m */,
+				8E1C52121A120B39005A24C5 /* PurposeTimeSetViewController.h */,
+				8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */,
 			);
 			name = Purpose;
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 				8EF7452F1A0B10DE005B47A8 /* UITextField+LabelAndImage.m in Sources */,
 				8E62575A1A08A24B00AC79B7 /* UIScrollView+Extension.m in Sources */,
 				8EF745291A0B0B89005B47A8 /* PurposeCreateViewController.m in Sources */,
+				8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */,
 				8E6257421A08A24B00AC79B7 /* AFPropertyListRequestOperation.m in Sources */,
 				8E6257461A08A24B00AC79B7 /* NSData+Base64.m in Sources */,
 				8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */,

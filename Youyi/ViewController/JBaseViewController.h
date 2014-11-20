@@ -30,6 +30,7 @@
 - (void)setTitle:(NSString*)title;
 //添加导航返回按钮
 - (void)addBackBtn;
+- (void)addBackBtn:(NSString*)title;
 //添加导航左按钮
 - (void)addLeftBtnWithImg:(UIImage*)btnImg selectImg:(UIImage*)selImg;
 - (void)addLeftBtn:(NSString*)title;

@@ -87,6 +87,16 @@
     [self.view addSubview:btn];
 }
 
+- (void)addBackBtn:(NSString*)title
+{
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    btn.frame = kBackBtnFrame;
+    [btn setTitle:title forState:UIControlStateNormal];
+    btn.layer.cornerRadius = 10; //圆形按钮的半径
+    [btn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+}
+
 - (void)backBtnClick:(id)sender
 {
     [appDelegate.navController popViewControllerAnimated:YES];

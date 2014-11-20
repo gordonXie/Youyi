@@ -70,8 +70,12 @@
 #define KDefaultSearchRange   @"5"          //默认搜索范围
 
 #pragma mark - FontSize
-#define KTableCellFontCommon  15.0
-#define KTableCellFontBig     18.0
-#define KTableCellFontSmall   12.0
+#define KCellFontSizeCommon  15.0
+#define KCellFontSizeBig     18.0
+#define KCellFontSizeSmall   12.0
+
+#define KFontSizeCommon           18.0
+#define KFontSizeBig              22.0
+#define KFontSizeSmall            15.0
 
 #endif
