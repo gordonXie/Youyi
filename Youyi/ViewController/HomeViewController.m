@@ -47,7 +47,7 @@
 - (void)initPurposeArray
 {
     _purposeArray = [[NSMutableArray alloc]initWithCapacity:5];
-//    [_purposeArray addObject:@"学习"];
+    [_purposeArray addObject:@"学习"];
 //    [_purposeArray addObject:@"塑身"];
 //    [_purposeArray addObject:@"存钱"];
     [_purposeArray addObject:@"新建"];
@@ -61,8 +61,12 @@
             ppItemView.isNewItem = YES;
             ppItemView.itemDelegate = self;
             [_baseScrollView addSubview:ppItemView];
-        }else{
             
+            _baseScrollView.contentSize = CGSizeMake((i+1)*SCREEN_WIDTH, CONTENT_HEIGHT);
+        }else{
+            PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
+            ppItemView.itemDelegate = self;
+            [_baseScrollView addSubview:ppItemView];
         }
     }
 }

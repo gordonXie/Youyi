@@ -4,3 +4,5 @@
 
 #import "JBaseViewController.h"
 #import "HomeViewController.h"
+#import "JPurpose.h"
+#import "JMember.h"
