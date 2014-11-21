@@ -12,6 +12,7 @@
 
 #define KTableCellHeight 36.0
 #define KTableCellLeftSpace 15.0
+#define KDescTextViewFontSize 17.0
 
 @interface PurposeCreateViewController ()<UITextFieldDelegate,UITextViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -19,6 +20,8 @@
     UITextField     *_nameTF;
     UITextField     *_styleTF;
     UITextView      *_descriptionTV;
+    UITextField     *_descriptionTF;
+    UIView          *_baseDescView;
     
     UITableView     *_tableView;
     
@@ -38,6 +41,7 @@
 @implementation PurposeCreateViewController
 @synthesize timeSectionEnd;
 @synthesize timeSectionStart;
+@synthesize homeVC;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -85,7 +89,7 @@
                 break;
             case 2:
             {
-                return KTableCellHeight*2+[XCommon heightForString:_descriptionTV.text fontSize:17.0 andWidth:SCREEN_WIDTH];
+                return KTableCellHeight*2+[XCommon heightForString:_descriptionTV.text fontSize:KDescTextViewFontSize andWidth:SCREEN_WIDTH-KTableCellLeftSpace];
             }
                 
             default:
@@ -245,24 +249,31 @@
 
 -(UIView*)descriptionCellView
 {
-    UIView *baseView;
-    if (_descriptionTV==nil) {
-        baseView = [[UIView alloc]initWithFrame:CGRectMake(KTableCellLeftSpace, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight*3)];
+    if (_baseDescView==nil) {
+        _baseDescView = [[UIView alloc]initWithFrame:CGRectMake(KTableCellLeftSpace, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight*3)];
         UILabel *decLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, 40, KTableCellHeight)];
         decLbl.font = [UIFont systemFontOfSize:15.0];
         decLbl.text = @"描述:";
-        [baseView addSubview:decLbl];
+        [_baseDescView addSubview:decLbl];
         
-        CGRect desRect = CGRectMake(0, KTableCellHeight, baseView.frame.size.width, KTableCellHeight);
+//        UITextField
+        
+        CGRect desRect = CGRectMake(0, KTableCellHeight, _baseDescView.frame.size.width, 30.0);
         _descriptionTV = [[UITextView alloc]initWithFrame:desRect];
         [_descriptionTV setBackgroundColor:[UIColor clearColor]];
         _descriptionTV.delegate = self;
-        _descriptionTV.font = [UIFont systemFontOfSize:KCellFontSizeCommon];
-        [baseView addSubview:_descriptionTV];
+        _descriptionTV.scrollEnabled = NO;
+        _descriptionTV.bounces = NO;
+        _descriptionTV.font = [UIFont systemFontOfSize:KDescTextViewFontSize];
+        [_baseDescView addSubview:_descriptionTV];
+    }else{
+        [_descriptionTV setFrame:CGRectMake(_descriptionTV.frame.origin.x, _descriptionTV.frame.origin.y, _descriptionTV.frame.size.width, [XCommon heightForString:_descriptionTV.text fontSize:KDescTextViewFontSize andWidth:_descriptionTV.frame.size.width])];
+
+        [_descriptionTV becomeFirstResponder];
+
     }
-    baseView.hidden = NO;
     
-    return baseView;
+    return _baseDescView;
 }
 
 - (UIView*)durationPickerViewForCell
@@ -393,5 +404,31 @@
         return [_cycleArray objectAtIndex:row];
     }
     return [_durationArray objectAtIndex:row];
+}
+
+#pragma mark - UITextViewDelegate
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    
+}
+
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+//    
+//}
+- (void)textViewDidChange:(UITextView *)textView
+{
+    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone ];
+}
+
+
+- (void)onRightBtnClick:(id)sender
+{
+    if ([XCommon isNullString:_nameTF.text]) {
+        [self.view makeToast:@"意向的名字不能为空"];
+        return;
+    }
+    
+    
 }
 @end

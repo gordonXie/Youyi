@@ -7,8 +7,11 @@
 //
 
 #import "JBaseViewController.h"
+#import "HomeViewController.h"
 
 @interface PurposeCreateViewController : JBaseViewController
 @property (nonatomic) NSString *timeSectionStart;
 @property (nonatomic) NSString *timeSectionEnd;
+
+@property (nonatomic) HomeViewController       *homeVC;
 @end

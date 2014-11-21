@@ -8,8 +8,9 @@
 
 #import "HomeViewController.h"
 #import "PurposeCreateViewController.h"
+#import "SwiftModule-swift.h"
 
-@interface HomeViewController ()
+@interface HomeViewController ()<PPItemViewDelegate>
 {
     UIScrollView    *_baseScrollView;
     NSMutableArray  *_purposeArray;
@@ -36,6 +37,7 @@
 - (void)addBaseScrollView
 {
     _baseScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _baseScrollView.pagingEnabled = YES;
     [self.view addSubview:_baseScrollView];
     
     [self initPurposeArray];
@@ -45,13 +47,24 @@
 - (void)initPurposeArray
 {
     _purposeArray = [[NSMutableArray alloc]initWithCapacity:5];
-    [_purposeArray addObject:@"学习"];
-    [_purposeArray addObject:@"塑身"];
-    [_purposeArray addObject:@"存钱"];
+//    [_purposeArray addObject:@"学习"];
+//    [_purposeArray addObject:@"塑身"];
+//    [_purposeArray addObject:@"存钱"];
+    [_purposeArray addObject:@"新建"];
 }
 - (void)addPurposes
 {
-    
+    for(int i=0;i<_purposeArray.count;i++){
+        if (i==_purposeArray.count-1) {
+            //新建
+            PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
+            ppItemView.isNewItem = YES;
+            ppItemView.itemDelegate = self;
+            [_baseScrollView addSubview:ppItemView];
+        }else{
+            
+        }
+    }
 }
 #pragma mark - 添加意向
 - (void)addNewPurpose
@@ -60,6 +73,12 @@
 }
 
 - (void)onRightBtnClick:(id)sender
+{
+    PurposeCreateViewController *purposeCreateVC = [[PurposeCreateViewController alloc]init];
+    [appDelegate.navController pushViewController:purposeCreateVC animated:YES];
+}
+
+- (void)onNewBtnClick
 {
     PurposeCreateViewController *purposeCreateVC = [[PurposeCreateViewController alloc]init];
     [appDelegate.navController pushViewController:purposeCreateVC animated:YES];

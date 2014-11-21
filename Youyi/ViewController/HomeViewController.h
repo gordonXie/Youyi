@@ -10,4 +10,5 @@
 
 @interface HomeViewController : JBaseViewController
 
+- (void)onNewBtnClick;
 @end
