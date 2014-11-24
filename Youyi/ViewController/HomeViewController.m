@@ -10,6 +10,7 @@
 #import "PurposeCreateViewController.h"
 #import "SwiftModule-swift.h"
 #import "JPurpose.h"
+#import "UserCenterViewController.h"
 
 @interface HomeViewController ()<PPItemViewDelegate>
 {
@@ -89,6 +90,12 @@
 - (void)addNewPurpose
 {
     
+}
+
+- (void)onLeftBtnClick:(id)sender
+{
+    UserCenterViewController *userVC = [[UserCenterViewController alloc]init];
+    [appDelegate.navController pushViewController:userVC animated:YES];
 }
 
 - (void)onRightBtnClick:(id)sender

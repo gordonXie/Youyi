@@ -14,6 +14,7 @@ let pi:CGFloat = 3.1415926
     
     optional func onNewBtnClick()
     optional func onActionBtnClick()
+    optional func onActionBtnLongPress()
     optional func onRecordBtnClick()
     optional func onShareBtnClick()
     optional func onMemberBtnClick(index:NSInteger)
@@ -60,8 +61,17 @@ class PurposeItemView: UIView {
         var frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
         actionBtn.frame = frame
         actionBtn.setImage(UIImage (named:"addNew"), forState: UIControlState.Normal)
-        actionBtn.addTarget(self, action: "onActionBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
+        actionBtn.setImage(UIImage (named: "share"), forState: UIControlState.Highlighted)
+//        actionBtn.addTarget(self, action: "onActionBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(actionBtn)
+        //添加单击手势
+        var singleGesture = UITapGestureRecognizer(target: self, action: "onActionBtnClick")
+        singleGesture.numberOfTapsRequired=1
+        actionBtn.addGestureRecognizer(singleGesture)
+        //添加长按手势 用来操作该意向(申请加入，退出或关闭(外人，内人，主人))
+        var longPress = UILongPressGestureRecognizer(target: self, action: "onActionBtnLongPress")
+        longPress.numberOfTouchesRequired = 1
+        actionBtn.addGestureRecognizer(longPress)
         
         //添加成员显示
         self.addItemMembers(actionBtn.center)
@@ -86,7 +96,7 @@ class PurposeItemView: UIView {
         
     }
     
-    //添加意向成员
+    //添加意向成员，设计为圆形显示
     func addItemMembers(centerPoint:CGPoint){
 
         let membBtnSize:CGFloat = 50.0   //60.0
@@ -130,6 +140,9 @@ class PurposeItemView: UIView {
     func onActionBtnClick(){
         itemDelegate?.onActionBtnClick?()
     }
+    func onActionBtnLongPress(){
+        itemDelegate?.onActionBtnLongPress?()
+    }
     func onRecordBtnClick(){
         itemDelegate?.onRecordBtnClick?()
     }
@@ -139,4 +152,5 @@ class PurposeItemView: UIView {
     func onMemberBtnClick(index:NSInteger){
         itemDelegate?.onMemberBtnClick?(index)
     }
+    
 }

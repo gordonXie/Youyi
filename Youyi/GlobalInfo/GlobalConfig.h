@@ -66,8 +66,8 @@
 #define STARTAR         @"startAR"          //进入应该自动启动AR扫描
 #define SESSIONID       @"sessionID"        //sessionID
 #define GuideStatus     @"guideStatus"      //引导页状态
-#define SEARCHRANGE     @"searchRange"      //搜索范围
-#define KDefaultSearchRange   @"5"          //默认搜索范围
+#define REMEMBERPS      @"rememberPS"       //记住密码
+#define NIKENAME        @"nikeName"         //昵称
 
 #pragma mark - FontSize
 #define KCellFontSizeCommon  15.0

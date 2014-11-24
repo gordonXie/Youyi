@@ -12,6 +12,8 @@
 #import "XCommon.h"
 #import "GlobalConfig.h"
 #import "AppDelegate.h"
+#import "UITextField+LabelAndImage.h"
+#import "MarkedWordsConfig.h"
 
 #define  kTopBtnSize  34.0f
 #define  kBackBtnFrame CGRectMake(10.0f, (NAVBAR_HEIGHT-kTopBtnSize)/2.0, kTopBtnSize, kTopBtnSize)

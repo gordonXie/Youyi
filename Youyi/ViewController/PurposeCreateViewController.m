@@ -370,17 +370,7 @@
 
 - (void)selectPickerView
 {
-    NSString *rangeStr;
-    if ([XCommon isNullString:[XCommon UserDefaultGetValueFromKey:SEARCHRANGE]]) {
-        rangeStr = KDefaultSearchRange;
-    }else
-        rangeStr = [XCommon UserDefaultGetValueFromKey:SEARCHRANGE];
-//    for (int i=0;i<_rangeArray.count;i++) {
-//        if ([[_rangeArray objectAtIndex:i] isEqualToString:rangeStr]) {
-//            [_pickerView selectRow:i inComponent:0 animated:NO];
-//            break;
-//        }
-//    }
+
 }
 
 
