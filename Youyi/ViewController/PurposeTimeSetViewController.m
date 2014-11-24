@@ -16,6 +16,9 @@
 @end
 
 @implementation PurposeTimeSetViewController
+@synthesize startTime;
+@synthesize endTime;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -57,6 +60,9 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm"]; // 这里是用大写的 H
     NSDate *startDate = [dateFormatter dateFromString:@"06:00"];
+    if (![XCommon isNullString:startTime]) {
+        startDate = [dateFormatter dateFromString:startTime];
+    }
     _startTimePicker.date = startDate;
     [_startTimePicker addTarget:self action:@selector(startTimeChange:)
          forControlEvents:UIControlEventValueChanged];
@@ -73,13 +79,15 @@
     _endTimePicker.datePickerMode = UIDatePickerModeTime;
     [_baseScrollView addSubview:_endTimePicker];
     NSDate *endDate = [dateFormatter dateFromString:@"22:00"];
+    if (![XCommon isNullString:endTime]) {
+        endDate = [dateFormatter dateFromString:endTime];
+    }
     _endTimePicker.date = endDate;
     _endTimePicker.minimumDate = _startTimePicker.date;
     
     [_endTimePicker addTarget:self action:@selector(endTimeChange:)
                forControlEvents:UIControlEventValueChanged];
     startH += pickerHeight+20;
-
 }
 
 - (void)startTimeChange:(id)sender

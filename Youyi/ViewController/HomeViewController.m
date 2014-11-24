@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "PurposeCreateViewController.h"
 #import "SwiftModule-swift.h"
+#import "JPurpose.h"
 
 @interface HomeViewController ()<PPItemViewDelegate>
 {
@@ -66,6 +67,20 @@
         }else{
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.itemDelegate = self;
+            JPurpose *pp = [[JPurpose alloc]init];
+            pp.ppId = 321;
+            pp.name = @"测试";
+            pp.style = @"过";
+            
+            pp.memberArray = [[NSMutableArray alloc]initWithCapacity:3];
+            for (int i = 0; i<8; i++) {
+                JMember *member = [[JMember alloc]init];
+                member.mId = 322;
+                member.name = @"腾";
+                [pp.memberArray addObject:member];
+            }
+            ppItemView.ppItem = pp;
+            
             [_baseScrollView addSubview:ppItemView];
         }
     }
@@ -86,6 +101,11 @@
 {
     PurposeCreateViewController *purposeCreateVC = [[PurposeCreateViewController alloc]init];
     [appDelegate.navController pushViewController:purposeCreateVC animated:YES];
+}
+
+- (void)onMemberBtnClick:(NSInteger)index
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

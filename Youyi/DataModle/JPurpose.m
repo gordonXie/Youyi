@@ -9,5 +9,12 @@
 #import "JPurpose.h"
 
 @implementation JPurpose
-
+@synthesize ppId = _ppId;
+@synthesize name = _name;
+@synthesize style = _style;
+@synthesize memberArray = _memberArray;
+@synthesize ppDesc = _ppDesc;
+@synthesize duration = _duration;
+@synthesize cycle = _cycle;
+@synthesize timeSection = _timeSection;
 @end

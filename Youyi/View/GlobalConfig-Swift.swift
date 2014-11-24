@@ -13,3 +13,4 @@ let SCREEN_WIDTH:CGFloat    = UIScreen.mainScreen().bounds.size.width
 let SCREEN_HEIGHT:CGFloat   = UIScreen.mainScreen().bounds.size.height-20
 let NAVBAR_HEIGHT:CGFloat   = 44.0
 let CONTENT_HEIGHT:CGFloat  = SCREEN_HEIGHT - NAVBAR_HEIGHT
+let MEMBERBTN_BASETAG = 101

@@ -9,5 +9,9 @@
 #import "JMember.h"
 
 @implementation JMember
+@synthesize mId = _mId;
+@synthesize name = _name;
+@synthesize headUrl = _headUrl;
+@synthesize ppArray = _ppArray;
 
 @end

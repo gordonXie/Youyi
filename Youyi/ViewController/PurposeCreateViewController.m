@@ -169,6 +169,7 @@
                     [_nameTF setBackgroundColor:[UIColor clearColor]];
                     _nameTF.placeholder = @"9个字以内";
                     _nameTF.delegate = self;
+                    _nameTF.returnKeyType = UIReturnKeyDone;
                     [_nameTF setLeftLabelWithText:@"名称:  "];
                 }
                 _nameTF.hidden = NO;
@@ -182,6 +183,7 @@
                     [_styleTF setBackgroundColor:[UIColor clearColor]];
                     _styleTF.placeholder = @"显示个性";
                     _styleTF.delegate = self;
+                    _styleTF.returnKeyType = UIReturnKeyDone;
                     [_styleTF setLeftLabelWithText:@"action:  "];
                 }
                 _styleTF.hidden = NO;
@@ -265,6 +267,7 @@
         _descriptionTV.scrollEnabled = NO;
         _descriptionTV.bounces = NO;
         _descriptionTV.font = [UIFont systemFontOfSize:KDescTextViewFontSize];
+        _descriptionTV.returnKeyType = UIReturnKeyDone;
         [_baseDescView addSubview:_descriptionTV];
     }else{
         [_descriptionTV setFrame:CGRectMake(_descriptionTV.frame.origin.x, _descriptionTV.frame.origin.y, _descriptionTV.frame.size.width, [XCommon heightForString:_descriptionTV.text fontSize:KDescTextViewFontSize andWidth:_descriptionTV.frame.size.width])];
@@ -342,6 +345,7 @@
         
         else if((indexPath.row==2&&!_isShowDurationPicker&&!_isShowCyclePicker)||((_isShowCyclePicker||_isShowDurationPicker)&&indexPath.row==3)){
             PurposeTimeSetViewController *setTimeVC = [[PurposeTimeSetViewController alloc]init];
+            
             [appDelegate.navController pushViewController:setTimeVC animated:YES];
         }
     }
@@ -411,16 +415,16 @@
 {
     
 }
-
-//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-//{
-//    
-//}
 - (void)textViewDidChange:(UITextView *)textView
 {
     [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone ];
 }
-
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 
 - (void)onRightBtnClick:(id)sender
 {
@@ -428,7 +432,6 @@
         [self.view makeToast:@"意向的名字不能为空"];
         return;
     }
-    
-    
 }
+
 @end

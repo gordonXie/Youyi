@@ -9,5 +9,6 @@
 #import "JBaseViewController.h"
 
 @interface PurposeTimeSetViewController : JBaseViewController
-
+@property (nonatomic) NSString *startTime;
+@property (nonatomic) NSString *endTime;
 @end
