@@ -110,7 +110,7 @@ class PurposeItemView: UIView {
         }
         println("centerX is \(centerPoint.x),centerY is \(centerPoint.y)")
         println("radius is \(radius)")
-        var startAngle:CGFloat = 0.0     //开始角度 0
+        var startAngle:CGFloat = 180.0     //开始角度 180.0,是第一个成员（创建者）在左水平位置
         for (var i=0;i<membCount;i++) {
             /*圆点坐标：(x0,y0)
             半径：r

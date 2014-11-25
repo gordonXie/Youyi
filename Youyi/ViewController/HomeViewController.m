@@ -74,7 +74,7 @@
             pp.style = @"过";
             
             pp.memberArray = [[NSMutableArray alloc]initWithCapacity:3];
-            for (int i = 0; i<8; i++) {
+            for (int i = 0; i<4; i++) {
                 JMember *member = [[JMember alloc]init];
                 member.mId = 322;
                 member.name = @"腾";
