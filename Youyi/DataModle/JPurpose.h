@@ -37,5 +37,6 @@ struct TimeSection
 @property (nonatomic) NSUInteger    *duration;
 @property (nonatomic) NSUInteger    *cycle;
 @property (nonatomic) struct TimeSection timeSection;
+@property (nonatomic) BOOL          isEnable;  //是否可用(关闭或过期时为不可用)
 
 @end

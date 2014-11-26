@@ -10,7 +10,7 @@
 #import "PurposeCreateViewController.h"
 #import "SwiftModule-swift.h"
 #import "JPurpose.h"
-#import "UserCenterViewController.h"
+#import "ThirdLoginViewController.h"
 
 @interface HomeViewController ()<PPItemViewDelegate>
 {
@@ -94,8 +94,16 @@
 
 - (void)onLeftBtnClick:(id)sender
 {
-    UserCenterViewController *userVC = [[UserCenterViewController alloc]init];
-    [appDelegate.navController pushViewController:userVC animated:YES];
+//    UserCenterViewController *userVC = [[UserCenterViewController alloc]init];
+//    [appDelegate.navController pushViewController:userVC animated:YES];
+    if (![[XCommon UserDefaultGetValueFromKey:ISLOGINKEY] isEqualToString:@"1"]) { //已登录
+        UserCenterVC *userVC = [[UserCenterVC alloc]init];
+        [appDelegate.navController pushViewController:userVC animated:YES];
+    }else{
+        ThirdLoginViewController *thirdLoginVC = [[ThirdLoginViewController alloc]init];
+        [appDelegate.navController pushViewController:thirdLoginVC animated:YES];
+    }
+
 }
 
 - (void)onRightBtnClick:(id)sender

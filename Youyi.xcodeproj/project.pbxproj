@@ -41,6 +41,8 @@
 		8E18400A1A1EF13200220A52 /* PurposeItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E1840091A1EF13200220A52 /* PurposeItemView.swift */; };
 		8E18400C1A1F10F500220A52 /* GlobalConfig-Swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E18400B1A1F10F500220A52 /* GlobalConfig-Swift.swift */; };
 		8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */; };
+		8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143861A25651100EAC511 /* UserCenterViewController.swift */; };
+		8E51438A1A257E8A00EAC511 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */; };
 		8E6256A71A08A12100AC79B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A61A08A12100AC79B7 /* main.m */; };
 		8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A91A08A12100AC79B7 /* AppDelegate.m */; };
 		8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256AC1A08A12100AC79B7 /* ViewController.m */; };
@@ -103,14 +105,6 @@
 		8E9CDC581A09D2A800D78F26 /* JMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC571A09D2A800D78F26 /* JMember.m */; };
 		8EF745291A0B0B89005B47A8 /* PurposeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF745281A0B0B89005B47A8 /* PurposeCreateViewController.m */; };
 		8EF7452F1A0B10DE005B47A8 /* UITextField+LabelAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7452E1A0B10DE005B47A8 /* UITextField+LabelAndImage.m */; };
-		8EFA585A1A232F6300D058C8 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58551A232F6300D058C8 /* LoginViewController.m */; };
-		8EFA585B1A232F6300D058C8 /* ModifyPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58571A232F6300D058C8 /* ModifyPwdViewController.m */; };
-		8EFA585C1A232F6300D058C8 /* MyPocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58591A232F6300D058C8 /* MyPocketViewController.m */; };
-		8EFA58631A232F6D00D058C8 /* ContactItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA585E1A232F6D00D058C8 /* ContactItemView.m */; };
-		8EFA58641A232F6D00D058C8 /* ContactUsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58601A232F6D00D058C8 /* ContactUsViewController.m */; };
-		8EFA58651A232F6D00D058C8 /* ForgetPswViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58621A232F6D00D058C8 /* ForgetPswViewController.m */; };
-		8EFA586A1A232F7700D058C8 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58671A232F7700D058C8 /* RegisterViewController.m */; };
-		8EFA586B1A232F7700D058C8 /* UserCenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EFA58691A232F7700D058C8 /* UserCenterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -165,6 +159,9 @@
 		8E18400B1A1F10F500220A52 /* GlobalConfig-Swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GlobalConfig-Swift.swift"; sourceTree = "<group>"; };
 		8E1C52121A120B39005A24C5 /* PurposeTimeSetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurposeTimeSetViewController.h; sourceTree = "<group>"; };
 		8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurposeTimeSetViewController.m; sourceTree = "<group>"; };
+		8E5143861A25651100EAC511 /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
+		8E5143881A257E8A00EAC511 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
+		8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginViewController.m; sourceTree = "<group>"; };
 		8E6256A11A08A12100AC79B7 /* Youyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6256A51A08A12100AC79B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6256A61A08A12100AC79B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -292,22 +289,6 @@
 		8EF745281A0B0B89005B47A8 /* PurposeCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurposeCreateViewController.m; sourceTree = "<group>"; };
 		8EF7452D1A0B10DE005B47A8 /* UITextField+LabelAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LabelAndImage.h"; sourceTree = "<group>"; };
 		8EF7452E1A0B10DE005B47A8 /* UITextField+LabelAndImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITextField+LabelAndImage.m"; sourceTree = "<group>"; };
-		8EFA58541A232F6300D058C8 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		8EFA58551A232F6300D058C8 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		8EFA58561A232F6300D058C8 /* ModifyPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModifyPwdViewController.h; sourceTree = "<group>"; };
-		8EFA58571A232F6300D058C8 /* ModifyPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModifyPwdViewController.m; sourceTree = "<group>"; };
-		8EFA58581A232F6300D058C8 /* MyPocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPocketViewController.h; sourceTree = "<group>"; };
-		8EFA58591A232F6300D058C8 /* MyPocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPocketViewController.m; sourceTree = "<group>"; };
-		8EFA585D1A232F6D00D058C8 /* ContactItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactItemView.h; sourceTree = "<group>"; };
-		8EFA585E1A232F6D00D058C8 /* ContactItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactItemView.m; sourceTree = "<group>"; };
-		8EFA585F1A232F6D00D058C8 /* ContactUsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactUsViewController.h; sourceTree = "<group>"; };
-		8EFA58601A232F6D00D058C8 /* ContactUsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactUsViewController.m; sourceTree = "<group>"; };
-		8EFA58611A232F6D00D058C8 /* ForgetPswViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgetPswViewController.h; sourceTree = "<group>"; };
-		8EFA58621A232F6D00D058C8 /* ForgetPswViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgetPswViewController.m; sourceTree = "<group>"; };
-		8EFA58661A232F7700D058C8 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
-		8EFA58671A232F7700D058C8 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
-		8EFA58681A232F7700D058C8 /* UserCenterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCenterViewController.h; sourceTree = "<group>"; };
-		8EFA58691A232F7700D058C8 /* UserCenterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCenterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -777,22 +758,9 @@
 		8EFA58511A23253700D058C8 /* UserCenter */ = {
 			isa = PBXGroup;
 			children = (
-				8EFA58661A232F7700D058C8 /* RegisterViewController.h */,
-				8EFA58671A232F7700D058C8 /* RegisterViewController.m */,
-				8EFA58681A232F7700D058C8 /* UserCenterViewController.h */,
-				8EFA58691A232F7700D058C8 /* UserCenterViewController.m */,
-				8EFA585D1A232F6D00D058C8 /* ContactItemView.h */,
-				8EFA585E1A232F6D00D058C8 /* ContactItemView.m */,
-				8EFA585F1A232F6D00D058C8 /* ContactUsViewController.h */,
-				8EFA58601A232F6D00D058C8 /* ContactUsViewController.m */,
-				8EFA58611A232F6D00D058C8 /* ForgetPswViewController.h */,
-				8EFA58621A232F6D00D058C8 /* ForgetPswViewController.m */,
-				8EFA58541A232F6300D058C8 /* LoginViewController.h */,
-				8EFA58551A232F6300D058C8 /* LoginViewController.m */,
-				8EFA58561A232F6300D058C8 /* ModifyPwdViewController.h */,
-				8EFA58571A232F6300D058C8 /* ModifyPwdViewController.m */,
-				8EFA58581A232F6300D058C8 /* MyPocketViewController.h */,
-				8EFA58591A232F6300D058C8 /* MyPocketViewController.m */,
+				8E5143861A25651100EAC511 /* UserCenterViewController.swift */,
+				8E5143881A257E8A00EAC511 /* ThirdLoginViewController.h */,
+				8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */,
 			);
 			name = UserCenter;
 			sourceTree = "<group>";
@@ -917,15 +885,12 @@
 				8EF7452F1A0B10DE005B47A8 /* UITextField+LabelAndImage.m in Sources */,
 				8E62575A1A08A24B00AC79B7 /* UIScrollView+Extension.m in Sources */,
 				8EF745291A0B0B89005B47A8 /* PurposeCreateViewController.m in Sources */,
-				8EFA586A1A232F7700D058C8 /* RegisterViewController.m in Sources */,
 				8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */,
 				8E6257421A08A24B00AC79B7 /* AFPropertyListRequestOperation.m in Sources */,
-				8EFA58641A232F6D00D058C8 /* ContactUsViewController.m in Sources */,
 				8E6257461A08A24B00AC79B7 /* NSData+Base64.m in Sources */,
 				8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */,
 				8E6257471A08A24B00AC79B7 /* NSData+UTF_8.m in Sources */,
 				8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */,
-				8EFA58631A232F6D00D058C8 /* ContactItemView.m in Sources */,
 				8E6257481A08A24B00AC79B7 /* NSObject+PGPerformSelectorOnMainThreadWithThreeObjects.m in Sources */,
 				8E6257491A08A24B00AC79B7 /* NSString+Base64.m in Sources */,
 				8E9CDC581A09D2A800D78F26 /* JMember.m in Sources */,
@@ -939,27 +904,24 @@
 				8E6257541A08A24B00AC79B7 /* GuideViewController.m in Sources */,
 				8E6257621A08A24B00AC79B7 /* SDWebImageDownloader.m in Sources */,
 				8E6257561A08A24B00AC79B7 /* MJRefreshBaseView.m in Sources */,
-				8EFA585A1A232F6300D058C8 /* LoginViewController.m in Sources */,
 				8E6257521A08A24B00AC79B7 /* FMDatabaseQueue.m in Sources */,
 				8E9CDC551A09D17800D78F26 /* JPurpose.m in Sources */,
+				8E51438A1A257E8A00EAC511 /* ThirdLoginViewController.m in Sources */,
 				8E6257531A08A24B00AC79B7 /* FMResultSet.m in Sources */,
 				8E6257611A08A24B00AC79B7 /* SDWebImageDecoder.m in Sources */,
 				8E18400A1A1EF13200220A52 /* PurposeItemView.swift in Sources */,
 				8E62574B1A08A24B00AC79B7 /* UIDevice-Hardware.m in Sources */,
 				8E62574D1A08A24B00AC79B7 /* XCommon.m in Sources */,
-				8EFA58651A232F6D00D058C8 /* ForgetPswViewController.m in Sources */,
-				8EFA585C1A232F6300D058C8 /* MyPocketViewController.m in Sources */,
 				8E62573D1A08A24B00AC79B7 /* AFJSONRequestOperation.m in Sources */,
 				8E6257571A08A24B00AC79B7 /* MJRefreshConst.m in Sources */,
 				8E62573B1A08A24B00AC79B7 /* AFHTTPRequestOperation.m in Sources */,
 				8E6257641A08A24B00AC79B7 /* SDWebImagePrefetcher.m in Sources */,
-				8EFA585B1A232F6300D058C8 /* ModifyPwdViewController.m in Sources */,
 				8E9CDC451A09BFD300D78F26 /* HomeViewController.m in Sources */,
-				8EFA586B1A232F7700D058C8 /* UserCenterViewController.m in Sources */,
 				8E9CDC3F1A08A9B200D78F26 /* JBaseViewController.m in Sources */,
 				8E6256A71A08A12100AC79B7 /* main.m in Sources */,
 				8E62575F1A08A24B00AC79B7 /* MKAnnotationView+WebCache.m in Sources */,
 				8E6257501A08A24B00AC79B7 /* FMDatabaseAdditions.m in Sources */,
+				8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */,
 				8E62574A1A08A24B00AC79B7 /* Toast+UIView.m in Sources */,
 				8E62575B1A08A24B00AC79B7 /* UIScrollView+MJRefresh.m in Sources */,
 				8E62573A1A08A24B00AC79B7 /* AFHTTPClient.m in Sources */,

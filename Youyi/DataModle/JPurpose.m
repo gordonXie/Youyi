@@ -17,4 +17,5 @@
 @synthesize duration = _duration;
 @synthesize cycle = _cycle;
 @synthesize timeSection = _timeSection;
+@synthesize isEnable = _isEnable;
 @end
