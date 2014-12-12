@@ -7,8 +7,8 @@
 //
 
 #import "JBaseViewController.h"
+#import "PurposeCreateViewController.h"
 
 @interface PurposeTimeSetViewController : JBaseViewController
-@property (nonatomic) NSString *startTime;
-@property (nonatomic) NSString *endTime;
+@property (nonatomic) PurposeCreateViewController *fromVC;
 @end

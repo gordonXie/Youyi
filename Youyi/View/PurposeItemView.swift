@@ -83,7 +83,7 @@ class PurposeItemView: UIView {
         var recordFrame = CGRectMake(recordBtnEdge,selfFrame.size.height-recordBtnEdge-recordBtnSize,recordBtnSize,recordBtnSize)
         recordBtn.frame = recordFrame
         recordBtn.setImage(UIImage (named:"record"), forState: UIControlState.Normal)
-        recordBtn.addTarget(self, action: "onrecordBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
+        recordBtn.addTarget(self, action: "onRecordBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(recordBtn)
         
         //添加分享按钮

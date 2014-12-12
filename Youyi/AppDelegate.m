@@ -25,7 +25,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
+    [self initShareSDK];
     
     HomeViewController *homeVC = [[HomeViewController alloc]init];
     _navController = [[UINavigationController alloc]initWithRootViewController:homeVC];
@@ -37,7 +37,7 @@
 
 - (void)initShareSDK
 {
-    [ShareSDK registerApp:@"46702562e5a8"];
+    [ShareSDK registerApp:@"4565b6e7ae80"];  //有意 ：46702562e5a8
 /*
     //添加新浪微博应用 注册网址 http://open.weibo.com
     [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
@@ -65,11 +65,37 @@
     [ShareSDK connectQQWithQZoneAppKey:@"100371282"
                      qqApiInterfaceCls:[QQApiInterface class]
                        tencentOAuthCls:[TencentOAuth class]];
-    
+   */
     //添加微信应用 注册网址 http://open.weixin.qq.com
-    [ShareSDK connectWeChatWithAppId:@"wx4868b35061f87885"
+//    [ShareSDK connectWeChatWithAppId:@"wxc4603fdb2f096fb3"
+//                           wechatCls:[WXApi class]];
+    
+    [ShareSDK connectWeChatWithAppId:@"wxc4603fdb2f096fb3"   //微信APPID
+                           appSecret:@"2fcd6f33a5ea90906d91b44bfc440c13"  //微信APPSecret
                            wechatCls:[WXApi class]];
-*/
+
+    //添加QQ应用  注册网址  http://open.qq.com/
+//    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
+//                     qqApiInterfaceCls:[QQApiInterface class]
+//                       tencentOAuthCls:[TencentOAuth class]];
+}
+
+- (BOOL)application:(UIApplication *)application
+      handleOpenURL:(NSURL *)url
+{
+    return [ShareSDK handleOpenURL:url
+                        wxDelegate:self];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return [ShareSDK handleOpenURL:url
+                 sourceApplication:sourceApplication
+                        annotation:annotation
+                        wxDelegate:self];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

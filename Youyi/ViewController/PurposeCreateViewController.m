@@ -10,9 +10,11 @@
 #import "UITextField+LabelAndImage.h"
 #import "PurposeTimeSetViewController.h"
 
-#define KTableCellHeight 36.0
+#define KTableCellHeight 42.0
 #define KTableCellLeftSpace 15.0
 #define KDescTextViewFontSize 17.0
+
+#define KTableCellTextColor @"#bebebe"
 
 @interface PurposeCreateViewController ()<UITextFieldDelegate,UITextViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITableViewDelegate,UITableViewDataSource>
 {
@@ -28,10 +30,12 @@
     //for PickerView
     UIPickerView    *_durationPickerView;
     UIPickerView    *_cyclePickerView;
+    UILabel         *_durationLbl;
+    UILabel         *_cycleLbl;
+    UILabel         *_timeLbl;
     
     NSArray         *_durationArray;
     NSArray         *_cycleArray;
-    NSArray         *_timeArray;
     
     BOOL            _isShowDurationPicker;
     BOOL            _isShowCyclePicker;
@@ -39,8 +43,8 @@
 @end
 
 @implementation PurposeCreateViewController
-@synthesize timeSectionEnd;
-@synthesize timeSectionStart;
+@synthesize timeSectionEnd = _timeSectionEnd;
+@synthesize timeSectionStart = _timeSectionStart;
 @synthesize homeVC;
 
 - (void)viewDidLoad {
@@ -65,6 +69,13 @@
     _baseScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
     [self.view addSubview:_baseScrollView];
     
+    //持续时间
+    _durationArray = [[NSArray alloc]initWithObjects:@"两周",@"三周",@"一个月",@"两个月",@"三个月",@"六个月", nil];
+    //重复(以天为单位) 可选择:每天，每两天，每三天，每周，每两周，每月
+    _cycleArray = [[NSArray alloc]initWithObjects:@"每天",@"每两天",@"每三天",@"每周",@"每两周",@"每月", nil];
+    _timeSectionStart = @"6:00";
+    _timeSectionEnd = @"22:00";
+    
     [self addTableView];
 }
 
@@ -74,6 +85,15 @@
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if (_timeLbl) {
+        _timeLbl.text = [NSString stringWithFormat:@"%@-%@",_timeSectionStart,_timeSectionEnd];
+    }
 }
 
 #pragma mark - UITableViewDelegate
@@ -151,7 +171,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
     
 //    for (UIView* view in [cell subviews]) {
@@ -205,6 +225,13 @@
                 case 0:
                 {
                     cell.textLabel.text = @"持续时间";
+                    if (_durationLbl==nil) {
+                        _durationLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
+                        _durationLbl.text = [_durationArray objectAtIndex:0];
+                        _durationLbl.textAlignment = NSTextAlignmentRight;
+                        _durationLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                        [cell addSubview:_durationLbl];
+                    }
                 }
                     break;
                 case 1:
@@ -214,6 +241,15 @@
                         [cell addSubview:[self durationPickerViewForCell]];
                     }else{
                         cell.textLabel.text = @"重复";
+                        if (_cycleLbl==nil) {
+                            _cycleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
+                            _cycleLbl.text = [_cycleArray objectAtIndex:0];
+                            _cycleLbl.textAlignment = NSTextAlignmentRight;
+                            _cycleLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                            [cell addSubview:_cycleLbl];
+                        }else{
+                            _cycleLbl.hidden = NO;
+                        }
                         _durationPickerView.hidden = YES;
                     }
                 }
@@ -222,6 +258,15 @@
                 {
                     if (_isShowDurationPicker) {
                         cell.textLabel.text = @"重复";
+                        if (_cycleLbl==nil) {
+                            _cycleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
+                            _cycleLbl.text = [_cycleArray objectAtIndex:0];
+                            _cycleLbl.textAlignment = NSTextAlignmentRight;
+                            _cycleLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                            [cell addSubview:_cycleLbl];
+                        }else{
+                            _cycleLbl.hidden = NO;
+                        }
                     }else if (_isShowCyclePicker) {
                         cell.textLabel.text = @"";
                         [cell addSubview:[self cyclePickerViewForCell]];
@@ -229,6 +274,14 @@
                         cell.textLabel.text = @"时段";
                         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                         _cyclePickerView.hidden = YES;
+                        
+                        if (_timeLbl==nil) {
+                            _timeLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace*2, KTableCellHeight)];
+                            _timeLbl.text = [NSString stringWithFormat:@"%@-%@",_timeSectionStart,_timeSectionEnd];
+                            _timeLbl.textAlignment = NSTextAlignmentRight;
+                            _timeLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                            [cell addSubview:_timeLbl];
+                        }
                     }
                 }
                     break;
@@ -282,8 +335,6 @@
 - (UIView*)durationPickerViewForCell
 {
     if (_durationPickerView==nil) {
-        _durationArray = [[NSArray alloc]initWithObjects:@"两周",@"三周",@"一个月",@"两个月",@"三个月",@"六个月", nil];
-        
         _durationPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, -KTableCellHeight+10, SCREEN_WIDTH, KTableCellHeight)];
         _durationPickerView.dataSource = self;
         _durationPickerView.delegate = self;
@@ -297,9 +348,6 @@
 - (UIView*)cyclePickerViewForCell
 {
     if (_cyclePickerView==nil) {
-        //重复(以天为单位) 可选择:每天，每两天，每三天，每周，每两周，每月
-        _cycleArray = [[NSArray alloc]initWithObjects:@"每天",@"每两天",@"每三天",@"每周",@"每两周",@"每月", nil];
-        
         _cyclePickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, -KTableCellHeight+10, SCREEN_WIDTH, KTableCellHeight)];
         _cyclePickerView.dataSource = self;
         _cyclePickerView.delegate = self;
@@ -312,6 +360,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
         NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
         if (indexPath.row==0) {  //持续时间
@@ -344,8 +393,10 @@
         }
         
         else if((indexPath.row==2&&!_isShowDurationPicker&&!_isShowCyclePicker)||((_isShowCyclePicker||_isShowDurationPicker)&&indexPath.row==3)){
-            PurposeTimeSetViewController *setTimeVC = [[PurposeTimeSetViewController alloc]init];
+            [self restoreTableView];
             
+            PurposeTimeSetViewController *setTimeVC = [[PurposeTimeSetViewController alloc]init];
+            setTimeVC.fromVC = self;
             [appDelegate.navController pushViewController:setTimeVC animated:YES];
         }
     }
@@ -373,7 +424,6 @@
 
 }
 
-
 #pragma mark - PickerViewDataSource
 //以下3个方法实现PickerView的数据初始化
 //确定picker的轮子个数
@@ -399,7 +449,14 @@
     }
     return [_durationArray objectAtIndex:row];
 }
-
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    if (pickerView==_durationPickerView) {
+        _durationLbl.text =  [_durationArray objectAtIndex:row];
+    }else if(pickerView==_cyclePickerView){
+        _cycleLbl.text =  [_cycleArray objectAtIndex:row];
+    }
+}
 #pragma mark - UITextViewDelegate
 - (void)textViewDidEndEditing:(UITextView *)textView
 {

@@ -43,6 +43,7 @@
 		8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E1C52131A120B39005A24C5 /* PurposeTimeSetViewController.m */; };
 		8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143861A25651100EAC511 /* UserCenterViewController.swift */; };
 		8E51438A1A257E8A00EAC511 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */; };
+		8E5E364B1A3A8F35009CB1DF /* PurposeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E364A1A3A8F35009CB1DF /* PurposeRecordViewController.swift */; };
 		8E6256A71A08A12100AC79B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A61A08A12100AC79B7 /* main.m */; };
 		8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A91A08A12100AC79B7 /* AppDelegate.m */; };
 		8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256AC1A08A12100AC79B7 /* ViewController.m */; };
@@ -162,6 +163,7 @@
 		8E5143861A25651100EAC511 /* UserCenterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCenterViewController.swift; sourceTree = "<group>"; };
 		8E5143881A257E8A00EAC511 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
 		8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginViewController.m; sourceTree = "<group>"; };
+		8E5E364A1A3A8F35009CB1DF /* PurposeRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurposeRecordViewController.swift; sourceTree = "<group>"; };
 		8E6256A11A08A12100AC79B7 /* Youyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6256A51A08A12100AC79B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6256A61A08A12100AC79B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -449,6 +451,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8E5E36491A3A8E93009CB1DF /* PPRecord */ = {
+			isa = PBXGroup;
+			children = (
+				8E5E364A1A3A8F35009CB1DF /* PurposeRecordViewController.swift */,
+			);
+			name = PPRecord;
+			sourceTree = "<group>";
+		};
 		8E6256981A08A12100AC79B7 = {
 			isa = PBXGroup;
 			children = (
@@ -702,6 +712,7 @@
 		8E9CDC3C1A08A9B200D78F26 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8E5E36491A3A8E93009CB1DF /* PPRecord */,
 				8EFA58511A23253700D058C8 /* UserCenter */,
 				8EF745261A0B0B3F005B47A8 /* Purpose */,
 				8E9CDC3D1A08A9B200D78F26 /* JBaseViewController.h */,
@@ -898,6 +909,7 @@
 				8E62574F1A08A24B00AC79B7 /* FMDatabase.m in Sources */,
 				8E6257441A08A24B00AC79B7 /* AFXMLRequestOperation.m in Sources */,
 				8E6257401A08A24B00AC79B7 /* AFNetworkReachability.m in Sources */,
+				8E5E364B1A3A8F35009CB1DF /* PurposeRecordViewController.swift in Sources */,
 				8E6257601A08A24B00AC79B7 /* SDImageCache.m in Sources */,
 				8E62575D1A08A24B00AC79B7 /* OpenUDID.m in Sources */,
 				8E62575E1A08A24B00AC79B7 /* MBProgressHUD.m in Sources */,

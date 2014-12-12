@@ -7,7 +7,7 @@
 //
 
 #import "PurposeTimeSetViewController.h"
-@interface PurposeTimeSetViewController()<UIPickerViewDelegate>
+@interface PurposeTimeSetViewController()
 {
     UIScrollView    *_baseScrollView;
     UIDatePicker    *_startTimePicker;
@@ -16,8 +16,7 @@
 @end
 
 @implementation PurposeTimeSetViewController
-@synthesize startTime;
-@synthesize endTime;
+@synthesize fromVC;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -60,8 +59,8 @@
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"HH:mm"]; // 这里是用大写的 H
     NSDate *startDate = [dateFormatter dateFromString:@"06:00"];
-    if (![XCommon isNullString:startTime]) {
-        startDate = [dateFormatter dateFromString:startTime];
+    if (![XCommon isNullString:fromVC.timeSectionStart]) {
+        startDate = [dateFormatter dateFromString:fromVC.timeSectionStart];
     }
     _startTimePicker.date = startDate;
     [_startTimePicker addTarget:self action:@selector(startTimeChange:)
@@ -79,8 +78,8 @@
     _endTimePicker.datePickerMode = UIDatePickerModeTime;
     [_baseScrollView addSubview:_endTimePicker];
     NSDate *endDate = [dateFormatter dateFromString:@"22:00"];
-    if (![XCommon isNullString:endTime]) {
-        endDate = [dateFormatter dateFromString:endTime];
+    if (![XCommon isNullString:fromVC.timeSectionEnd]) {
+        endDate = [dateFormatter dateFromString:fromVC.timeSectionEnd];
     }
     _endTimePicker.date = endDate;
     _endTimePicker.minimumDate = _startTimePicker.date;
@@ -97,5 +96,14 @@
 - (void)endTimeChange:(id)sender
 {
     
+}
+
+- (void)onRightBtnClick:(id)sender
+{
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];//实例化一个NSDateFormatter对象
+    [dateFormat setDateFormat:@"HH:mm"];//设定时间格式,这里可以设置成自己需要的格式
+    fromVC.timeSectionStart = [dateFormat stringFromDate:_startTimePicker.date];
+    fromVC.timeSectionEnd = [dateFormat stringFromDate:_endTimePicker.date];;
+    [self backBtnClick:sender];
 }
 @end

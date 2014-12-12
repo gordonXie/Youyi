@@ -11,6 +11,9 @@
 #import "SwiftModule-swift.h"
 #import "JPurpose.h"
 #import "ThirdLoginViewController.h"
+#import <ShareSDK/ShareSDK.h>
+#import <ShareSDK/ISSContent.h>
+#import <ShareSDK/ISSContainer.h>
 
 @interface HomeViewController ()<PPItemViewDelegate>
 {
@@ -121,6 +124,47 @@
 - (void)onMemberBtnClick:(NSInteger)index
 {
     
+}
+
+- (void)onRecordBtnClick
+{
+    
+}
+
+- (void)onShareBtnClick
+{
+    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"png"];
+    //[ShareSDK imageWithPath:imagePath]
+    //构造分享内容
+    id<ISSContent> publishContent = [ShareSDK content:@"WeChat"
+                                       defaultContent:@"hahahaha"
+                                                image:[ShareSDK pngImageWithImage:[UIImage imageNamed:@"share"]]
+                                                title:@"有意就一起来."
+                                                  url:@""
+                                          description:@"这是一条测试信息"
+                                            mediaType:SSPublishContentMediaTypeNews];
+    //创建弹出菜单容器
+    id<ISSContainer> container = [ShareSDK container];
+    [container setIPadContainerWithView:self.view arrowDirect:UIPopoverArrowDirectionUp];
+    
+    //弹出分享菜单
+    [ShareSDK showShareActionSheet:container
+                         shareList:nil
+                           content:publishContent
+                     statusBarTips:YES
+                       authOptions:nil
+                      shareOptions:nil
+                            result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                
+                                if (state == SSResponseStateSuccess)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                }
+                                else if (state == SSResponseStateFail)
+                                {
+                                    NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                }
+                            }];
 }
 
 - (void)didReceiveMemoryWarning {
