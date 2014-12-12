@@ -44,6 +44,15 @@
 		8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143861A25651100EAC511 /* UserCenterViewController.swift */; };
 		8E51438A1A257E8A00EAC511 /* ThirdLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */; };
 		8E5E364B1A3A8F35009CB1DF /* PurposeRecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E364A1A3A8F35009CB1DF /* PurposeRecordViewController.swift */; };
+		8E5E36611A3A9DED009CB1DF /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36501A3A9DED009CB1DF /* CalendarDayCell.m */; };
+		8E5E36621A3A9DED009CB1DF /* CalendarDayModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36521A3A9DED009CB1DF /* CalendarDayModel.m */; };
+		8E5E36631A3A9DED009CB1DF /* CalendarHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36541A3A9DED009CB1DF /* CalendarHomeViewController.m */; };
+		8E5E36641A3A9DED009CB1DF /* CalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36561A3A9DED009CB1DF /* CalendarLogic.m */; };
+		8E5E36651A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36581A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m */; };
+		8E5E36661A3A9DED009CB1DF /* CalendarMonthHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E365A1A3A9DED009CB1DF /* CalendarMonthHeaderView.m */; };
+		8E5E36671A3A9DED009CB1DF /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E365C1A3A9DED009CB1DF /* CalendarViewController.m */; };
+		8E5E36681A3A9DED009CB1DF /* chack.png in Resources */ = {isa = PBXBuildFile; fileRef = 8E5E365D1A3A9DED009CB1DF /* chack.png */; };
+		8E5E36691A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E5E36601A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m */; };
 		8E6256A71A08A12100AC79B7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A61A08A12100AC79B7 /* main.m */; };
 		8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256A91A08A12100AC79B7 /* AppDelegate.m */; };
 		8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6256AC1A08A12100AC79B7 /* ViewController.m */; };
@@ -164,6 +173,24 @@
 		8E5143881A257E8A00EAC511 /* ThirdLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThirdLoginViewController.h; sourceTree = "<group>"; };
 		8E5143891A257E8A00EAC511 /* ThirdLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThirdLoginViewController.m; sourceTree = "<group>"; };
 		8E5E364A1A3A8F35009CB1DF /* PurposeRecordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PurposeRecordViewController.swift; sourceTree = "<group>"; };
+		8E5E364F1A3A9DED009CB1DF /* CalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
+		8E5E36501A3A9DED009CB1DF /* CalendarDayCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayCell.m; sourceTree = "<group>"; };
+		8E5E36511A3A9DED009CB1DF /* CalendarDayModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayModel.h; sourceTree = "<group>"; };
+		8E5E36521A3A9DED009CB1DF /* CalendarDayModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarDayModel.m; sourceTree = "<group>"; };
+		8E5E36531A3A9DED009CB1DF /* CalendarHomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarHomeViewController.h; sourceTree = "<group>"; };
+		8E5E36541A3A9DED009CB1DF /* CalendarHomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarHomeViewController.m; sourceTree = "<group>"; };
+		8E5E36551A3A9DED009CB1DF /* CalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarLogic.h; sourceTree = "<group>"; };
+		8E5E36561A3A9DED009CB1DF /* CalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarLogic.m; sourceTree = "<group>"; };
+		8E5E36571A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthCollectionViewLayout.h; sourceTree = "<group>"; };
+		8E5E36581A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthCollectionViewLayout.m; sourceTree = "<group>"; };
+		8E5E36591A3A9DED009CB1DF /* CalendarMonthHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarMonthHeaderView.h; sourceTree = "<group>"; };
+		8E5E365A1A3A9DED009CB1DF /* CalendarMonthHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarMonthHeaderView.m; sourceTree = "<group>"; };
+		8E5E365B1A3A9DED009CB1DF /* CalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarViewController.h; sourceTree = "<group>"; };
+		8E5E365C1A3A9DED009CB1DF /* CalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalendarViewController.m; sourceTree = "<group>"; };
+		8E5E365D1A3A9DED009CB1DF /* chack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chack.png; sourceTree = "<group>"; };
+		8E5E365E1A3A9DED009CB1DF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
+		8E5E365F1A3A9DED009CB1DF /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
+		8E5E36601A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
 		8E6256A11A08A12100AC79B7 /* Youyi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youyi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E6256A51A08A12100AC79B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8E6256A61A08A12100AC79B7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -459,6 +486,31 @@
 			name = PPRecord;
 			sourceTree = "<group>";
 		};
+		8E5E364E1A3A9DED009CB1DF /* ZFCalendar */ = {
+			isa = PBXGroup;
+			children = (
+				8E5E364F1A3A9DED009CB1DF /* CalendarDayCell.h */,
+				8E5E36501A3A9DED009CB1DF /* CalendarDayCell.m */,
+				8E5E36511A3A9DED009CB1DF /* CalendarDayModel.h */,
+				8E5E36521A3A9DED009CB1DF /* CalendarDayModel.m */,
+				8E5E36531A3A9DED009CB1DF /* CalendarHomeViewController.h */,
+				8E5E36541A3A9DED009CB1DF /* CalendarHomeViewController.m */,
+				8E5E36551A3A9DED009CB1DF /* CalendarLogic.h */,
+				8E5E36561A3A9DED009CB1DF /* CalendarLogic.m */,
+				8E5E36571A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.h */,
+				8E5E36581A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m */,
+				8E5E36591A3A9DED009CB1DF /* CalendarMonthHeaderView.h */,
+				8E5E365A1A3A9DED009CB1DF /* CalendarMonthHeaderView.m */,
+				8E5E365B1A3A9DED009CB1DF /* CalendarViewController.h */,
+				8E5E365C1A3A9DED009CB1DF /* CalendarViewController.m */,
+				8E5E365D1A3A9DED009CB1DF /* chack.png */,
+				8E5E365E1A3A9DED009CB1DF /* Color.h */,
+				8E5E365F1A3A9DED009CB1DF /* NSDate+WQCalendarLogic.h */,
+				8E5E36601A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m */,
+			);
+			path = ZFCalendar;
+			sourceTree = "<group>";
+		};
 		8E6256981A08A12100AC79B7 = {
 			isa = PBXGroup;
 			children = (
@@ -537,6 +589,7 @@
 		8E6256CD1A08A24B00AC79B7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				8E5E364E1A3A9DED009CB1DF /* ZFCalendar */,
 				8E6256CE1A08A24B00AC79B7 /* AFNetworking */,
 				8E6256E81A08A24B00AC79B7 /* Common */,
 				8E6256FC1A08A24B00AC79B7 /* FMDB */,
@@ -863,6 +916,7 @@
 				8E183FED1A1EDEC800220A52 /* Resource.bundle in Resources */,
 				8E183FF61A1EDEC800220A52 /* ShareSDKFlatShareViewUI.bundle in Resources */,
 				8E183FF01A1EDEC800220A52 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
+				8E5E36681A3A9DED009CB1DF /* chack.png in Resources */,
 				8E6257551A08A24B00AC79B7 /* MJRefresh.bundle in Resources */,
 				8E6256B21A08A12100AC79B7 /* Images.xcassets in Resources */,
 				8E183FF21A1EDEC800220A52 /* WeiboSDK.bundle in Resources */,
@@ -889,6 +943,7 @@
 				8E6257431A08A24B00AC79B7 /* AFURLConnectionOperation.m in Sources */,
 				8E6257591A08A24B00AC79B7 /* MJRefreshHeaderView.m in Sources */,
 				8E62574C1A08A24B00AC79B7 /* UIView+SuperView.m in Sources */,
+				8E5E36631A3A9DED009CB1DF /* CalendarHomeViewController.m in Sources */,
 				8E6257661A08A24B00AC79B7 /* UIImageView+WebCache.m in Sources */,
 				8E62573C1A08A24B00AC79B7 /* AFImageRequestOperation.m in Sources */,
 				8E62573E1A08A24B00AC79B7 /* AFJSONUtilities.m in Sources */,
@@ -901,7 +956,9 @@
 				8E6257461A08A24B00AC79B7 /* NSData+Base64.m in Sources */,
 				8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */,
 				8E6257471A08A24B00AC79B7 /* NSData+UTF_8.m in Sources */,
+				8E5E36691A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m in Sources */,
 				8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */,
+				8E5E36651A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m in Sources */,
 				8E6257481A08A24B00AC79B7 /* NSObject+PGPerformSelectorOnMainThreadWithThreeObjects.m in Sources */,
 				8E6257491A08A24B00AC79B7 /* NSString+Base64.m in Sources */,
 				8E9CDC581A09D2A800D78F26 /* JMember.m in Sources */,
@@ -909,12 +966,14 @@
 				8E62574F1A08A24B00AC79B7 /* FMDatabase.m in Sources */,
 				8E6257441A08A24B00AC79B7 /* AFXMLRequestOperation.m in Sources */,
 				8E6257401A08A24B00AC79B7 /* AFNetworkReachability.m in Sources */,
+				8E5E36621A3A9DED009CB1DF /* CalendarDayModel.m in Sources */,
 				8E5E364B1A3A8F35009CB1DF /* PurposeRecordViewController.swift in Sources */,
 				8E6257601A08A24B00AC79B7 /* SDImageCache.m in Sources */,
 				8E62575D1A08A24B00AC79B7 /* OpenUDID.m in Sources */,
 				8E62575E1A08A24B00AC79B7 /* MBProgressHUD.m in Sources */,
 				8E6257541A08A24B00AC79B7 /* GuideViewController.m in Sources */,
 				8E6257621A08A24B00AC79B7 /* SDWebImageDownloader.m in Sources */,
+				8E5E36641A3A9DED009CB1DF /* CalendarLogic.m in Sources */,
 				8E6257561A08A24B00AC79B7 /* MJRefreshBaseView.m in Sources */,
 				8E6257521A08A24B00AC79B7 /* FMDatabaseQueue.m in Sources */,
 				8E9CDC551A09D17800D78F26 /* JPurpose.m in Sources */,
@@ -933,8 +992,11 @@
 				8E6256A71A08A12100AC79B7 /* main.m in Sources */,
 				8E62575F1A08A24B00AC79B7 /* MKAnnotationView+WebCache.m in Sources */,
 				8E6257501A08A24B00AC79B7 /* FMDatabaseAdditions.m in Sources */,
+				8E5E36611A3A9DED009CB1DF /* CalendarDayCell.m in Sources */,
 				8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */,
+				8E5E36661A3A9DED009CB1DF /* CalendarMonthHeaderView.m in Sources */,
 				8E62574A1A08A24B00AC79B7 /* Toast+UIView.m in Sources */,
+				8E5E36671A3A9DED009CB1DF /* CalendarViewController.m in Sources */,
 				8E62575B1A08A24B00AC79B7 /* UIScrollView+MJRefresh.m in Sources */,
 				8E62573A1A08A24B00AC79B7 /* AFHTTPClient.m in Sources */,
 				8E6257651A08A24B00AC79B7 /* UIButton+WebCache.m in Sources */,
