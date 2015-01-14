@@ -25,7 +25,9 @@ typedef NS_ENUM(NSInteger, CollectionViewCellDayType) {
     CellDayTypePast,    //过去的日期
     CellDayTypeFutur,   //将来的日期
     CellDayTypeWeek,    //周末
-    CellDayTypeClick    //被点击的日期
+    CellDayTypeClick,   //被点击的日期
+    CellDayTypeMiss,    //未达到
+    CellDayTypeReach    //达到
 
 };
 

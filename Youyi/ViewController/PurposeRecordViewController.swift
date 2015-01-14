@@ -10,9 +10,16 @@ import Foundation
 import UIKit
 
 class PurposeRecordViewController: JBaseViewController {
+    var chvc:CalendarHomeViewController?;
     override func initViews() {
         super.initViews()
         self.setTitle("记录")
         self.addBackBtn()
+        
+        self.addCalender()
+    }
+    
+    func addCalender(){
+//        chvc = 
     }
 }

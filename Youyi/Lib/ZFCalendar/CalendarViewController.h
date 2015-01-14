@@ -12,11 +12,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CalendarLogic.h"
+#import "JBaseViewController.h"
 
 //回掉代码块
 typedef void (^CalendarBlock)(CalendarDayModel *model);
 
-@interface CalendarViewController : UIViewController
+@interface CalendarViewController : JBaseViewController
 
 @property(nonatomic ,strong) UICollectionView* collectionView;//网格视图
 

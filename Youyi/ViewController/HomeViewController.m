@@ -15,10 +15,17 @@
 #import <ShareSDK/ISSContent.h>
 #import <ShareSDK/ISSContainer.h>
 
+#import "CalendarHomeViewController.h"
+#import "CalendarViewController.h"
+#import "Color.h"
+
+
 @interface HomeViewController ()<PPItemViewDelegate>
 {
     UIScrollView    *_baseScrollView;
     NSMutableArray  *_purposeArray;
+    
+    CalendarHomeViewController *chvc;
 }
 @end
 
@@ -128,12 +135,42 @@
 
 - (void)onRecordBtnClick
 {
+    if (!chvc) {
+        
+        chvc = [[CalendarHomeViewController alloc]init];
+        
+        chvc.calendartitle = @"飞机";
+        
+//        [chvc setAirPlaneToDay:365 ToDateforString:nil];//飞机初始化方法
+        [chvc setRecordFromDate:@"2014-11-10" withDuration:80 withCycle:7];
+        
+    }
+    
+    chvc.calendarblock = ^(CalendarDayModel *model){
+        
+        NSLog(@"\n---------------------------");
+        NSLog(@"1星期 %@",[model getWeek]);
+        NSLog(@"2字符串 %@",[model toString]);
+        NSLog(@"3节日  %@",model.holiday);
+        
+//        if (model.holiday) {
+//            
+//            [but setTitle:[NSString stringWithFormat:@"%@ %@ %@",[model toString],[model getWeek],model.holiday] forState:UIControlStateNormal];
+//            
+//        }else{
+//            
+//            [but setTitle:[NSString stringWithFormat:@"%@ %@",[model toString],[model getWeek]] forState:UIControlStateNormal];
+//            
+//        }
+    };
+    
+    [self.navigationController pushViewController:chvc animated:YES];
     
 }
 
 - (void)onShareBtnClick
 {
-    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"png"];
+//    NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"ShareSDK" ofType:@"png"];
     //[ShareSDK imageWithPath:imagePath]
     //构造分享内容
     id<ISSContent> publishContent = [ShareSDK content:@"WeChat"

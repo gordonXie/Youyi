@@ -23,8 +23,6 @@
 <UICollectionViewDataSource,UICollectionViewDelegate>
 {
 
-     NSTimer* timer;//定时器
-
 }
 @end
 
@@ -41,7 +39,6 @@ static NSString *DayCell = @"DayCell";
     if (self) {
         // Custom initialization
         [self initData];
-        [self initView];
     }
     return self;
 }
@@ -50,7 +47,8 @@ static NSString *DayCell = @"DayCell";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
+    [self setTitle:@"选择日期"];
+    [self addBackBtn];
 }
 
 - (void)didReceiveMemoryWarning
@@ -59,22 +57,18 @@ static NSString *DayCell = @"DayCell";
     // Dispose of any resources that can be recreated.
 }
 
-
-
-- (void)initView{
-    
-    
-    [self setTitle:@"选择日期"];
+- (void)initViews{
+    [super initViews];
     
     CalendarMonthCollectionViewLayout *layout = [CalendarMonthCollectionViewLayout new];
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout]; //初始化网格视图大小
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, CONTENT_HEIGHT) collectionViewLayout:layout]; //初始化网格视图大小
     
     [self.collectionView registerClass:[CalendarDayCell class] forCellWithReuseIdentifier:DayCell];//cell重用设置ID
     
     [self.collectionView registerClass:[CalendarMonthHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:MonthHeader];
     
-//    self.collectionView.bounces = NO;//将网格视图的下拉效果关闭
+//    self.collectionView.bounces = YES;//将网格视图的下拉效果关闭
     
     self.collectionView.delegate = self;//实现网格视图的delegate
     
@@ -87,13 +81,11 @@ static NSString *DayCell = @"DayCell";
 }
 
 
-
 -(void)initData{
     
     self.calendarMonth = [[NSMutableArray alloc]init];//每个月份的数组
     
 }
-
 
 
 #pragma mark - CollectionView代理方法
@@ -161,8 +153,7 @@ static NSString *DayCell = @"DayCell";
         if (self.calendarblock) {
             
             self.calendarblock(model);//传递数组给上级
-            
-            timer = [NSTimer scheduledTimerWithTimeInterval:0.2 target:self selector:@selector(onTimer) userInfo:nil repeats:YES];
+
         }
         [self.collectionView reloadData];
     }
@@ -174,18 +165,6 @@ static NSString *DayCell = @"DayCell";
     return YES;
 }
 
-
-
-
-//定时器方法
-- (void)onTimer{
-    
-    [timer invalidate];//定时器无效
-    
-    timer = nil;
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
 
 
 @end

@@ -24,4 +24,7 @@
 
 - (void)setTrainToDay:(int)day ToDateforString:(NSString *)todate;//火车初始化方法
 
+//added by auda 2014-12-16
+- (void)setRecordFromDate:(NSString*)fromDate withDuration:(int)durDays withCycle:(int)cycDays;//记录初始化方法
+
 @end

@@ -80,8 +80,14 @@
     [super.collectionView reloadData];//刷新
     
 }
-
-
+//记录初始化方法
+- (void)setRecordFromDate:(NSString*)fromDate withDuration:(int)durDays withCycle:(int)cycDays
+{
+    daynumber = durDays;
+    optiondaynumber = 1;
+    super.CalendarMonth = [self getMonthArrayOfDuration:durDays withCycle:cycDays fromDateforString:fromDate];
+    [super.collectionView reloadData];
+}
 
 #pragma mark - 逻辑代码初始化
 
@@ -104,16 +110,35 @@
     return [super.Logic reloadCalendarView:date selectDate:selectdate  needDays:day];
 }
 
-
-
-#pragma mark - 设置标题
-
-- (void)setCalendartitle:(NSString *)calendartitle
+- (NSMutableArray *)getMonthArrayOfDuration:(int)durDays withCycle:(int)cycDays fromDateforString:(NSString *)fromDate
 {
-
-    [self.navigationItem setTitle:calendartitle];
-
+    
+    NSDate *date = [NSDate date];
+    if (fromDate) {
+        date = [date dateFromString:fromDate];
+    }
+    
+    NSDate *selectdate  = [NSDate date];
+    
+//    if (todate) {
+//        
+//        selectdate = [selectdate dateFromString:todate];
+//        
+//    }
+    
+    super.Logic = [[CalendarLogic alloc]init];
+    
+    return [super.Logic reloadCalendarView:date selectDate:selectdate  needDays:durDays];
 }
+
+//#pragma mark - 设置标题
+//
+//- (void)setCalendartitle:(NSString *)calendartitle
+//{
+//
+//    [self.navigationItem setTitle:calendartitle];
+//
+//}
 
 
 @end
