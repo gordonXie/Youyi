@@ -51,11 +51,11 @@ class UserCenterVC: JBaseViewController,UITableViewDataSource,UITableViewDelegat
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         }
         if indexPath.section==0{
-            cell?.imageView.image=UIImage(named: "share")
-            cell?.textLabel.text = "我的昵称"
+            cell?.imageView!.image=UIImage(named: "share")
+            cell?.textLabel!.text = "我的昵称"
         }else{
-            cell?.imageView.image=UIImage(named: "share")
-            cell?.textLabel.text = "意向名称"
+            cell?.imageView!.image=UIImage(named: "share")
+            cell?.textLabel!.text = "意向名称"
         }
         
         return cell!
