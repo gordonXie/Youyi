@@ -85,7 +85,7 @@
 {
     daynumber = durDays;
     optiondaynumber = 1;
-    super.CalendarMonth = [self getMonthArrayOfDuration:durDays withCycle:cycDays fromDateforString:fromDate];
+    super.calendarMonth = [self getMonthArrayOfDuration:durDays withCycle:cycDays fromDateforString:fromDate];
     [super.collectionView reloadData];
 }
 

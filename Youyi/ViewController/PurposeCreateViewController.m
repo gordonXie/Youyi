@@ -9,6 +9,7 @@
 #import "PurposeCreateViewController.h"
 #import "UITextField+LabelAndImage.h"
 #import "PurposeTimeSetViewController.h"
+#import "JView_MyPicker.h"
 
 #define KTableCellHeight 42.0
 #define KTableCellLeftSpace 15.0
@@ -16,7 +17,7 @@
 
 #define KTableCellTextColor @"#bebebe"
 
-@interface PurposeCreateViewController ()<UITextFieldDelegate,UITextViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface PurposeCreateViewController ()<UITextFieldDelegate,UITextViewDelegate,UITableViewDelegate,UITableViewDataSource,JView_MyPickerDelegate>
 {
     UIScrollView    *_baseScrollView;
     UITextField     *_nameTF;
@@ -28,8 +29,8 @@
     UITableView     *_tableView;
     
     //for PickerView
-    UIPickerView    *_durationPickerView;
-    UIPickerView    *_cyclePickerView;
+    JView_MyPicker    *_durationPickerView;
+    JView_MyPicker    *_cyclePickerView;
     UILabel         *_durationLbl;
     UILabel         *_cycleLbl;
     UILabel         *_timeLbl;
@@ -37,8 +38,8 @@
     NSArray         *_durationArray;
     NSArray         *_cycleArray;
     
-    BOOL            _isShowDurationPicker;
-    BOOL            _isShowCyclePicker;
+//    BOOL            _isShowDurationPicker;
+//    BOOL            _isShowCyclePicker;
 }
 @end
 
@@ -56,11 +57,8 @@
 {
     [super initViews];
     [self setTitle:@"新建意向"];
-//    [self addLeftBtnWithImg:[UIImage imageNamed:@"ico_Return" ] selectImg:nil];
     [self addLeftBtn:@"返回"];
     [self addRightBtn:@"保存"];
-    
-    _isShowDurationPicker = NO;
     
     [self addBaseScrollView];
 }
@@ -125,17 +123,11 @@
                 break;
             case 1:
             {
-                if (_isShowDurationPicker) {
-                    return KTableCellHeight*3;
-                }
                 return KTableCellHeight;
             }
                 break;
             case 2:
             {
-                if (_isShowCyclePicker) {
-                    return KTableCellHeight*3;
-                }
                 return KTableCellHeight;
             }
             case 3:
@@ -160,9 +152,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section==1&&(_isShowDurationPicker||_isShowCyclePicker)) {
-        return 4;
-    }
     return 3;
 }
 
@@ -237,62 +226,33 @@
                     break;
                 case 1:
                 {
-                    if (_isShowDurationPicker) {
-                        cell.textLabel.text = @"";
-                        [cell addSubview:[self durationPickerViewForCell]];
+                    cell.textLabel.text = @"重复";
+                    if (_cycleLbl==nil) {
+                        _cycleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
+                        _cycleLbl.text = [_cycleArray objectAtIndex:0];
+                        _cycleLbl.textAlignment = NSTextAlignmentRight;
+                        _cycleLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                        [cell addSubview:_cycleLbl];
                     }else{
-                        cell.textLabel.text = @"重复";
-                        if (_cycleLbl==nil) {
-                            _cycleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
-                            _cycleLbl.text = [_cycleArray objectAtIndex:0];
-                            _cycleLbl.textAlignment = NSTextAlignmentRight;
-                            _cycleLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
-                            [cell addSubview:_cycleLbl];
-                        }else{
-                            _cycleLbl.hidden = NO;
-                        }
-                        _durationPickerView.hidden = YES;
+                        _cycleLbl.hidden = NO;
                     }
+                    
                 }
                     break;
                 case 2:
                 {
-                    if (_isShowDurationPicker) {
-                        cell.textLabel.text = @"重复";
-                        if (_cycleLbl==nil) {
-                            _cycleLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
-                            _cycleLbl.text = [_cycleArray objectAtIndex:0];
-                            _cycleLbl.textAlignment = NSTextAlignmentRight;
-                            _cycleLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
-                            [cell addSubview:_cycleLbl];
-                        }else{
-                            _cycleLbl.hidden = NO;
-                        }
-                    }else if (_isShowCyclePicker) {
-                        cell.textLabel.text = @"";
-                        [cell addSubview:[self cyclePickerViewForCell]];
-                    }else{
-                        cell.textLabel.text = @"时段";
-                        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-                        _cyclePickerView.hidden = YES;
-                        
-                        if (_timeLbl==nil) {
-                            _timeLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace*2, KTableCellHeight)];
-                            _timeLbl.text = [NSString stringWithFormat:@"%@-%@",_timeSectionStart,_timeSectionEnd];
-                            _timeLbl.textAlignment = NSTextAlignmentRight;
-                            _timeLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
-                            [cell addSubview:_timeLbl];
-                        }
+                    cell.textLabel.text = @"时段";
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    _cyclePickerView.hidden = YES;
+                    
+                    if (_timeLbl==nil) {
+                        _timeLbl = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH-KTableCellLeftSpace*2, KTableCellHeight)];
+                        _timeLbl.text = [NSString stringWithFormat:@"%@-%@",_timeSectionStart,_timeSectionEnd];
+                        _timeLbl.textAlignment = NSTextAlignmentRight;
+                        _timeLbl.textColor = [XCommon hexStringToColor:KTableCellTextColor];
+                        [cell addSubview:_timeLbl];
                     }
-                }
-                    break;
-                case 3:
-                {
-                    if (_isShowDurationPicker||_isShowCyclePicker) {
-                        cell.textLabel.text = @"时段";
-                    }else{
-                        [cell removeFromSuperview];
-                    }
+                    
                 }
                     break;
                 default:
@@ -333,69 +293,17 @@
     return _baseDescView;
 }
 
-- (UIView*)durationPickerViewForCell
-{
-    if (_durationPickerView==nil) {
-        _durationPickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, -KTableCellHeight+10, SCREEN_WIDTH, KTableCellHeight)];
-        _durationPickerView.dataSource = self;
-        _durationPickerView.delegate = self;
-        _durationPickerView.showsSelectionIndicator = YES;
-    }
-    _durationPickerView.hidden = NO;
-
-    return _durationPickerView;
-}
-
-- (UIView*)cyclePickerViewForCell
-{
-    if (_cyclePickerView==nil) {
-        _cyclePickerView = [[UIPickerView alloc]initWithFrame:CGRectMake(0, -KTableCellHeight+10, SCREEN_WIDTH, KTableCellHeight)];
-        _cyclePickerView.dataSource = self;
-        _cyclePickerView.delegate = self;
-        _cyclePickerView.showsSelectionIndicator = YES;
-    }
-    _cyclePickerView.hidden = NO;
-    
-    return _cyclePickerView;
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.section==1) {
-        NSIndexPath *nextIndexPath = [NSIndexPath indexPathForRow:indexPath.row+1 inSection:indexPath.section];
         if (indexPath.row==0) {  //持续时间
-            if (!_isShowDurationPicker) {
-                //显示_durationPickerView
-                [self restoreTableView];
-                
-                _isShowDurationPicker = YES;
-                [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:nextIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-            }else{
-                //隐藏_durationPickerView
-                _isShowDurationPicker = NO;
-                [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:nextIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-                _durationPickerView.hidden = YES;
-            }
+            [self showDurationPickerView];
         }
-        
-        else if((indexPath.row==1&&!_isShowDurationPicker)||(_isShowDurationPicker&&indexPath.row==2)){  //重复
-            nextIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];  //当showDuration时，如果不重置，nextIndexPath的row为3，位置不对。应该总是2
-            if (!_isShowCyclePicker) {
-                [self restoreTableView];
-                
-                _isShowCyclePicker = YES;
-                [_tableView insertRowsAtIndexPaths:[NSArray arrayWithObjects:nextIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-            }else{
-                _isShowCyclePicker = NO;
-                [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:nextIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-                _cyclePickerView.hidden = YES;
-            }
+        else if(indexPath.row==1){  //重复
+            [self showCyclePickerView];
         }
-        
-        else if((indexPath.row==2&&!_isShowDurationPicker&&!_isShowCyclePicker)||((_isShowCyclePicker||_isShowDurationPicker)&&indexPath.row==3)){
-            [self restoreTableView];
-            
+        else if(indexPath.row==2){
             PurposeTimeSetViewController *setTimeVC = [[PurposeTimeSetViewController alloc]init];
             setTimeVC.fromVC = self;
             [appDelegate.navController pushViewController:setTimeVC animated:YES];
@@ -403,28 +311,33 @@
     }
 }
 
-#pragma mark - 还原tableView，隐私显示的pickerView
-- (void)restoreTableView
+//显示选择持续时间
+- (void)showDurationPickerView
 {
-    if (_isShowDurationPicker) {
-        _isShowDurationPicker = NO;
-        NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForRow:1 inSection:1];
-        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:pickerIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-        _durationPickerView.hidden = YES;
+    if (!_durationPickerView) {
+        _durationPickerView = [[JView_MyPicker alloc] init];
+        _durationPickerView.delegate = self;
     }
-    if (_isShowCyclePicker) {
-        _isShowCyclePicker = NO;
-        NSIndexPath *pickerIndexPath = [NSIndexPath indexPathForRow:2 inSection:1];
-        [_tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:pickerIndexPath, nil] withRowAnimation:UITableViewRowAnimationMiddle];
-        _cyclePickerView.hidden = YES;
+    if (!_durationPickerView.dataSource) {
+        _durationPickerView.dataSource = _durationArray;
     }
+    [_durationPickerView show];
 }
 
-- (void)selectPickerView
+//显示选择周期时间
+- (void)showCyclePickerView
 {
-
+    if (!_cyclePickerView) {
+        _cyclePickerView = [[JView_MyPicker alloc] init];
+        _cyclePickerView.delegate = self;
+    }
+    if (!_cyclePickerView.dataSource) {
+        _cyclePickerView.dataSource = _cycleArray;
+    }
+    [_cyclePickerView show];
 }
 
+/*
 #pragma mark - PickerViewDataSource
 //以下3个方法实现PickerView的数据初始化
 //确定picker的轮子个数
@@ -458,6 +371,7 @@
         _cycleLbl.text =  [_cycleArray objectAtIndex:row];
     }
 }
+*/
 #pragma mark - UITextViewDelegate
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
@@ -479,6 +393,18 @@
     if ([XCommon isNullString:_nameTF.text]) {
         [self.view makeToast:@"意向的名字不能为空"];
         return;
+    }
+}
+
+#pragma mark - JView_MyPickerDelegate
+- (void)JPickerDismiss:(JView_MyPicker *)picker cancel:(BOOL)cancel{
+    if (!cancel) {
+        NSInteger row = picker.didSelectRow;
+        if (picker==_cyclePickerView) {
+            _cycleLbl.text =  [_cycleArray objectAtIndex:row];
+        }else{
+            _durationLbl.text =  [_durationArray objectAtIndex:row];
+        }
     }
 }
 

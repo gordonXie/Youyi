@@ -29,6 +29,7 @@
 		06D954C71B283E9800D937ED /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954B51B283E9800D937ED /* UIRefreshControl+AFNetworking.m */; };
 		06D954C81B283E9800D937ED /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954B71B283E9800D937ED /* UIWebView+AFNetworking.m */; };
 		06D954CB1B283F4900D937ED /* AFNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954CA1B283F4900D937ED /* AFNetworkReachability.m */; };
+		06D954D31B2876C400D937ED /* JView_MyPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954D21B2876C400D937ED /* JView_MyPicker.m */; };
 		8E183FE11A1EDEC800220A52 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */; };
 		8E183FE21A1EDEC800220A52 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */; };
 		8E183FE31A1EDEC800220A52 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBE1A1EDEC800220A52 /* MailConnection.framework */; };
@@ -182,6 +183,8 @@
 		06D954B71B283E9800D937ED /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		06D954C91B283F4900D937ED /* AFNetworkReachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkReachability.h; sourceTree = "<group>"; };
 		06D954CA1B283F4900D937ED /* AFNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachability.m; sourceTree = "<group>"; };
+		06D954D11B2876C400D937ED /* JView_MyPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JView_MyPicker.h; sourceTree = "<group>"; };
+		06D954D21B2876C400D937ED /* JView_MyPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JView_MyPicker.m; sourceTree = "<group>"; };
 		8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		8E183FBE1A1EDEC800220A52 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -470,6 +473,23 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		06D954CF1B2876C400D937ED /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				06D954D01B2876C400D937ED /* MyPicker */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		06D954D01B2876C400D937ED /* MyPicker */ = {
+			isa = PBXGroup;
+			children = (
+				06D954D11B2876C400D937ED /* JView_MyPicker.h */,
+				06D954D21B2876C400D937ED /* JView_MyPicker.m */,
+			);
+			path = MyPicker;
+			sourceTree = "<group>";
+		};
 		8E183FBA1A1EDEC800220A52 /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -572,6 +592,7 @@
 		8E1840071A1EF03A00220A52 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				06D954CF1B2876C400D937ED /* CustomView */,
 				8E1840091A1EF13200220A52 /* PurposeItemView.swift */,
 				8E1840081A1EF13100220A52 /* Youyi-Bridging-Header.h */,
 				8E18400B1A1F10F500220A52 /* GlobalConfig-Swift.swift */,
@@ -1015,6 +1036,7 @@
 				8E6256AD1A08A12100AC79B7 /* ViewController.m in Sources */,
 				8E6257471A08A24B00AC79B7 /* NSData+UTF_8.m in Sources */,
 				06D954C21B283E9800D937ED /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				06D954D31B2876C400D937ED /* JView_MyPicker.m in Sources */,
 				8E5E36691A3A9DED009CB1DF /* NSDate+WQCalendarLogic.m in Sources */,
 				8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */,
 				8E5E36651A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m in Sources */,
