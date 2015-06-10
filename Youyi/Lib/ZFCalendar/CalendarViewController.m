@@ -48,7 +48,8 @@ static NSString *DayCell = @"DayCell";
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self setTitle:@"选择日期"];
-    [self addBackBtn];
+//    [self addBackBtn];
+    [self addBackBtn:@"返回"];
 }
 
 - (void)didReceiveMemoryWarning

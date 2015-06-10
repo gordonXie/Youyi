@@ -56,7 +56,8 @@
 {
     [super initViews];
     [self setTitle:@"新建意向"];
-    [self addBackBtn:@"返回"];
+//    [self addLeftBtnWithImg:[UIImage imageNamed:@"ico_Return" ] selectImg:nil];
+    [self addLeftBtn:@"返回"];
     [self addRightBtn:@"保存"];
     
     _isShowDurationPicker = NO;

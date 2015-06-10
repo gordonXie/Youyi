@@ -1135,7 +1135,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: wang jiaxiang (9XYSV93T59)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guocheng Xie (PFEM6M5HW8)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1157,6 +1157,7 @@
 				);
 				PRODUCT_MODULE_NAME = SwiftModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8a0c936f-4869-49ca-bc46-b8d0f149a413";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Youyi/View/Youyi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1168,7 +1169,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: wang jiaxiang (9XYSV93T59)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Guocheng Xie (PFEM6M5HW8)";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1190,6 +1191,7 @@
 				);
 				PRODUCT_MODULE_NAME = SwiftModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "8a0c936f-4869-49ca-bc46-b8d0f149a413";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Youyi/View/Youyi-Bridging-Header.h";
 			};

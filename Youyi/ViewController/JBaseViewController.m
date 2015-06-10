@@ -79,12 +79,13 @@
 //添加返回按钮
 - (void)addBackBtn
 {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = kBackBtnFrame;
-//    [btn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_back_normal@2x",appDelegate.configInfo.colorType]] forState:UIControlStateNormal];
-//    [btn setBackgroundImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@_back_selected@2x",appDelegate.configInfo.colorType]] forState:UIControlStateHighlighted];
-    [btn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
+    [self addBackBtn:@"返回"];
+//    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    btn.frame = kBackBtnFrame;
+//    [btn setBackgroundImage:[UIImage imageNamed:@"ico_Return"] forState:UIControlStateNormal];
+//    [btn setBackgroundImage:[UIImage imageNamed:@""] forState:UIControlStateHighlighted];
+//    [btn addTarget:self action:@selector(backBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:btn];
 }
 
 - (void)addBackBtn:(NSString*)title
@@ -127,7 +128,7 @@
 
 - (void)onLeftBtnClick:(id)sender
 {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (UIButton*)getLeftBtn

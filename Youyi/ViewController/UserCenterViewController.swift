@@ -15,7 +15,7 @@ class UserCenterVC: JBaseViewController,UITableViewDataSource,UITableViewDelegat
     override func initViews() {
         super.initViews()
         self.setTitle("个人中心")
-        addBackBtn()
+        addBackBtn("返回")
         addRightBtn("设置")
         
         self.addUserInfo()
