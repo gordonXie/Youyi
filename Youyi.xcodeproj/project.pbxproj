@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06D9548D1B283BDD00D937ED /* JModel_Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954861B283BDD00D937ED /* JModel_Member.m */; };
+		06D9548E1B283BDD00D937ED /* JModel_Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954881B283BDD00D937ED /* JModel_Base.m */; };
+		06D9548F1B283BDD00D937ED /* JModel_PPForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D9548A1B283BDD00D937ED /* JModel_PPForm.m */; };
+		06D954901B283BDD00D937ED /* JModel_Purpose.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D9548C1B283BDD00D937ED /* JModel_Purpose.m */; };
 		8E183FE11A1EDEC800220A52 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */; };
 		8E183FE21A1EDEC800220A52 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */; };
 		8E183FE31A1EDEC800220A52 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBE1A1EDEC800220A52 /* MailConnection.framework */; };
@@ -110,9 +114,6 @@
 		8E9CDC3F1A08A9B200D78F26 /* JBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC3E1A08A9B200D78F26 /* JBaseViewController.m */; };
 		8E9CDC421A08ADDE00D78F26 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E9CDC411A08ADDE00D78F26 /* libsqlite3.dylib */; };
 		8E9CDC451A09BFD300D78F26 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC441A09BFD300D78F26 /* HomeViewController.m */; };
-		8E9CDC541A09D17800D78F26 /* JPPForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC511A09D17800D78F26 /* JPPForm.m */; };
-		8E9CDC551A09D17800D78F26 /* JPurpose.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC531A09D17800D78F26 /* JPurpose.m */; };
-		8E9CDC581A09D2A800D78F26 /* JMember.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9CDC571A09D2A800D78F26 /* JMember.m */; };
 		8EF745291A0B0B89005B47A8 /* PurposeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF745281A0B0B89005B47A8 /* PurposeCreateViewController.m */; };
 		8EF7452F1A0B10DE005B47A8 /* UITextField+LabelAndImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 8EF7452E1A0B10DE005B47A8 /* UITextField+LabelAndImage.m */; };
 /* End PBXBuildFile section */
@@ -128,6 +129,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		06D954851B283BDD00D937ED /* JModel_Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_Member.h; sourceTree = "<group>"; };
+		06D954861B283BDD00D937ED /* JModel_Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JModel_Member.m; sourceTree = "<group>"; };
+		06D954871B283BDD00D937ED /* JModel_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_Base.h; sourceTree = "<group>"; };
+		06D954881B283BDD00D937ED /* JModel_Base.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JModel_Base.m; sourceTree = "<group>"; };
+		06D954891B283BDD00D937ED /* JModel_PPForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_PPForm.h; sourceTree = "<group>"; };
+		06D9548A1B283BDD00D937ED /* JModel_PPForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JModel_PPForm.m; sourceTree = "<group>"; };
+		06D9548B1B283BDD00D937ED /* JModel_Purpose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_Purpose.h; sourceTree = "<group>"; };
+		06D9548C1B283BDD00D937ED /* JModel_Purpose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JModel_Purpose.m; sourceTree = "<group>"; };
 		8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		8E183FBE1A1EDEC800220A52 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -308,12 +317,6 @@
 		8E9CDC411A08ADDE00D78F26 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		8E9CDC431A09BFD300D78F26 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		8E9CDC441A09BFD300D78F26 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		8E9CDC501A09D17800D78F26 /* JPPForm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPPForm.h; sourceTree = "<group>"; };
-		8E9CDC511A09D17800D78F26 /* JPPForm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPPForm.m; sourceTree = "<group>"; };
-		8E9CDC521A09D17800D78F26 /* JPurpose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPurpose.h; sourceTree = "<group>"; };
-		8E9CDC531A09D17800D78F26 /* JPurpose.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPurpose.m; sourceTree = "<group>"; };
-		8E9CDC561A09D2A800D78F26 /* JMember.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JMember.h; sourceTree = "<group>"; };
-		8E9CDC571A09D2A800D78F26 /* JMember.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JMember.m; sourceTree = "<group>"; };
 		8EF745271A0B0B89005B47A8 /* PurposeCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurposeCreateViewController.h; sourceTree = "<group>"; };
 		8EF745281A0B0B89005B47A8 /* PurposeCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurposeCreateViewController.m; sourceTree = "<group>"; };
 		8EF7452D1A0B10DE005B47A8 /* UITextField+LabelAndImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITextField+LabelAndImage.h"; sourceTree = "<group>"; };
@@ -369,6 +372,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		06D954841B283BDD00D937ED /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				06D954851B283BDD00D937ED /* JModel_Member.h */,
+				06D954861B283BDD00D937ED /* JModel_Member.m */,
+				06D954871B283BDD00D937ED /* JModel_Base.h */,
+				06D954881B283BDD00D937ED /* JModel_Base.m */,
+				06D954891B283BDD00D937ED /* JModel_PPForm.h */,
+				06D9548A1B283BDD00D937ED /* JModel_PPForm.m */,
+				06D9548B1B283BDD00D937ED /* JModel_Purpose.h */,
+				06D9548C1B283BDD00D937ED /* JModel_Purpose.m */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		8E183FBA1A1EDEC800220A52 /* ShareSDK */ = {
 			isa = PBXGroup;
 			children = (
@@ -534,8 +552,8 @@
 		8E6256A31A08A12100AC79B7 /* Youyi */ = {
 			isa = PBXGroup;
 			children = (
+				06D954841B283BDD00D937ED /* DataModel */,
 				8E1840071A1EF03A00220A52 /* View */,
-				8E9CDC4F1A09D17800D78F26 /* DataModle */,
 				8E9CDC3C1A08A9B200D78F26 /* ViewController */,
 				8E6256CA1A08A24B00AC79B7 /* GlobalInfo */,
 				8E6256CD1A08A24B00AC79B7 /* Lib */,
@@ -795,19 +813,6 @@
 			path = Youyi;
 			sourceTree = "<group>";
 		};
-		8E9CDC4F1A09D17800D78F26 /* DataModle */ = {
-			isa = PBXGroup;
-			children = (
-				8E9CDC501A09D17800D78F26 /* JPPForm.h */,
-				8E9CDC511A09D17800D78F26 /* JPPForm.m */,
-				8E9CDC521A09D17800D78F26 /* JPurpose.h */,
-				8E9CDC531A09D17800D78F26 /* JPurpose.m */,
-				8E9CDC561A09D2A800D78F26 /* JMember.h */,
-				8E9CDC571A09D2A800D78F26 /* JMember.m */,
-			);
-			path = DataModle;
-			sourceTree = "<group>";
-		};
 		8EF745261A0B0B3F005B47A8 /* Purpose */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,11 +945,11 @@
 			files = (
 				8E6257581A08A24B00AC79B7 /* MJRefreshFooterView.m in Sources */,
 				8E6257631A08A24B00AC79B7 /* SDWebImageManager.m in Sources */,
-				8E9CDC541A09D17800D78F26 /* JPPForm.m in Sources */,
 				8E6257431A08A24B00AC79B7 /* AFURLConnectionOperation.m in Sources */,
 				8E6257591A08A24B00AC79B7 /* MJRefreshHeaderView.m in Sources */,
 				8E62574C1A08A24B00AC79B7 /* UIView+SuperView.m in Sources */,
 				8E5E36631A3A9DED009CB1DF /* CalendarHomeViewController.m in Sources */,
+				06D9548D1B283BDD00D937ED /* JModel_Member.m in Sources */,
 				8E6257661A08A24B00AC79B7 /* UIImageView+WebCache.m in Sources */,
 				8E62573C1A08A24B00AC79B7 /* AFImageRequestOperation.m in Sources */,
 				8E62573E1A08A24B00AC79B7 /* AFJSONUtilities.m in Sources */,
@@ -952,6 +957,7 @@
 				8EF7452F1A0B10DE005B47A8 /* UITextField+LabelAndImage.m in Sources */,
 				8E62575A1A08A24B00AC79B7 /* UIScrollView+Extension.m in Sources */,
 				8EF745291A0B0B89005B47A8 /* PurposeCreateViewController.m in Sources */,
+				06D9548F1B283BDD00D937ED /* JModel_PPForm.m in Sources */,
 				8E1C52141A120B39005A24C5 /* PurposeTimeSetViewController.m in Sources */,
 				8E6257421A08A24B00AC79B7 /* AFPropertyListRequestOperation.m in Sources */,
 				8E6257461A08A24B00AC79B7 /* NSData+Base64.m in Sources */,
@@ -962,7 +968,6 @@
 				8E5E36651A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m in Sources */,
 				8E6257481A08A24B00AC79B7 /* NSObject+PGPerformSelectorOnMainThreadWithThreeObjects.m in Sources */,
 				8E6257491A08A24B00AC79B7 /* NSString+Base64.m in Sources */,
-				8E9CDC581A09D2A800D78F26 /* JMember.m in Sources */,
 				8E6257511A08A24B00AC79B7 /* FMDatabasePool.m in Sources */,
 				8E62574F1A08A24B00AC79B7 /* FMDatabase.m in Sources */,
 				8E6257441A08A24B00AC79B7 /* AFXMLRequestOperation.m in Sources */,
@@ -977,8 +982,8 @@
 				8E5E36641A3A9DED009CB1DF /* CalendarLogic.m in Sources */,
 				8E6257561A08A24B00AC79B7 /* MJRefreshBaseView.m in Sources */,
 				8E6257521A08A24B00AC79B7 /* FMDatabaseQueue.m in Sources */,
-				8E9CDC551A09D17800D78F26 /* JPurpose.m in Sources */,
 				8E51438A1A257E8A00EAC511 /* ThirdLoginViewController.m in Sources */,
+				06D954901B283BDD00D937ED /* JModel_Purpose.m in Sources */,
 				8E6257531A08A24B00AC79B7 /* FMResultSet.m in Sources */,
 				8E6257611A08A24B00AC79B7 /* SDWebImageDecoder.m in Sources */,
 				8E18400A1A1EF13200220A52 /* PurposeItemView.swift in Sources */,
@@ -991,6 +996,7 @@
 				8E9CDC451A09BFD300D78F26 /* HomeViewController.m in Sources */,
 				8E9CDC3F1A08A9B200D78F26 /* JBaseViewController.m in Sources */,
 				8E6256A71A08A12100AC79B7 /* main.m in Sources */,
+				06D9548E1B283BDD00D937ED /* JModel_Base.m in Sources */,
 				8E62575F1A08A24B00AC79B7 /* MKAnnotationView+WebCache.m in Sources */,
 				8E6257501A08A24B00AC79B7 /* FMDatabaseAdditions.m in Sources */,
 				8E5E36611A3A9DED009CB1DF /* CalendarDayCell.m in Sources */,

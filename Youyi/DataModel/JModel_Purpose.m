@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 xieguocheng. All rights reserved.
 //
 
-#import "JPurpose.h"
+#import "JModel_Purpose.h"
 
-@implementation JPurpose
+@implementation JModel_Purpose
 @synthesize ppId = _ppId;
 @synthesize name = _name;
 @synthesize style = _style;

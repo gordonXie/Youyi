@@ -4,7 +4,7 @@
 
 #import "JBaseViewController.h"
 #import "HomeViewController.h"
-#import "JPurpose.h"
-#import "JMember.h"
+#import "JModel_Purpose.h"
+#import "JModel_Member.h"
 #import "CalendarViewController.h"
 #import "CalendarHomeViewController.h"

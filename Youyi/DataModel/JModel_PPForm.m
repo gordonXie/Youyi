@@ -6,8 +6,8 @@
 //  Copyright (c) 2014年 xieguocheng. All rights reserved.
 //
 
-#import "JPPForm.h"
+#import "JModel_PPForm.h"
 
-@implementation JPPForm
+@implementation JModel_PPForm
 
 @end

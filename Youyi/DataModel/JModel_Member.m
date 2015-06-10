@@ -6,9 +6,9 @@
 //  Copyright (c) 2014年 xieguocheng. All rights reserved.
 //
 
-#import "JMember.h"
+#import "JModel_Member.h"
 
-@implementation JMember
+@implementation JModel_Member
 @synthesize mId = _mId;
 @synthesize name = _name;
 @synthesize headUrl = _headUrl;

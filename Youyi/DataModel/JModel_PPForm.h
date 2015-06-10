@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JPPForm : NSObject
+@interface JModel_PPForm : NSObject
 
 @end

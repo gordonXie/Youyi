@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JMember : NSObject
+@interface JModel_Member : NSObject
 {
     NSUInteger _mId;             //成员编号
     NSString  *_name;           //成员名称

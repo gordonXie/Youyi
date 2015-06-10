@@ -22,9 +22,9 @@ let pi:CGFloat = 3.1415926
 class PurposeItemView: UIView {
     
     var isNewItem:Bool = false
-    var purpose:JPurpose?
+    var purpose:JModel_Purpose?
     var itemDelegate:PPItemViewDelegate?
-    var ppItem:JPurpose?
+    var ppItem:JModel_Purpose?
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.

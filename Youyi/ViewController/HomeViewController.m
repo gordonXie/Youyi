@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "PurposeCreateViewController.h"
 #import "SwiftModule-swift.h"
-#import "JPurpose.h"
+#import "JModel_Purpose.h"
 #import "ThirdLoginViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDK/ISSContent.h>
@@ -78,14 +78,14 @@
         }else{
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.itemDelegate = self;
-            JPurpose *pp = [[JPurpose alloc]init];
+            JModel_Purpose *pp = [[JModel_Purpose alloc]init];
             pp.ppId = 321;
             pp.name = @"测试";
             pp.style = @"过";
             
             pp.memberArray = [[NSMutableArray alloc]initWithCapacity:3];
             for (int i = 0; i<4; i++) {
-                JMember *member = [[JMember alloc]init];
+                JModel_Member *member = [[JModel_Member alloc]init];
                 member.mId = 322;
                 member.name = @"腾";
                 [pp.memberArray addObject:member];
