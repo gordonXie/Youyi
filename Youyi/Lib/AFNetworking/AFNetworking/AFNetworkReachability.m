@@ -7,18 +7,20 @@
 //
 
 #import "AFNetworkReachability.h"
-#import "AFHTTPClient.h"
+#import "AFHTTPRequestOperationManager.h"
+#import "AFNetworkReachabilityManager.h"
 
 @implementation AFNetworkReachability
 +(BOOL)checkNetworkConnectivity
 {
     // 1. AFNetwork 是根据是否能够连接到baseUrl来判断网络连接状态的
     // 提示：最好使用门户网站来判断网络连接状态。
-    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
-    AFHTTPClient *client = [[AFHTTPClient alloc] initWithBaseURL:url];
+//    NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+//    AFHTTPRequestOperationManager *client = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:url];
+    
     BOOL __block isFinishBlock = NO;
     BOOL __block isConnect = YES;
-    [client setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+    [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         // 之所以区分无线和3G主要是为了替用户省钱，省流量
         // 如果应用程序占流量很大，一定要提示用户，或者提供专门的设置，仅在无线网络时使用！
         isFinishBlock = YES;

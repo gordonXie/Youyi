@@ -9,6 +9,7 @@
 #import "JBaseViewController.h"
 #import "AppDelegate.h"
 #import "AFNetWorking.h"
+#import "AFNetworkReachability.h"
 
 #define KLeftBtnTag  49
 #define KRightBtnTag 50
