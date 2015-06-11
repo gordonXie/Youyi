@@ -23,17 +23,14 @@ green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
 blue:((float)(rgbValue & 0x0000FF))/255.0 \
 alpha:alphaValue]
 
-/**< 颜色 */
-#define  CLEAR_BACKGROUND_COLOR [UIColor clearColor]
 
-#define COLOR_REDBUTTON         RGBCOLOR(252, 110, 81)
-#define COLOR_GREEN_FH          RGBCOLOR(161, 211, 110)
-#define COLOR_RED_FH            RGBCOLOR(252, 110, 81)
-#define COLOR_BLUE_Light_FH     RGBCOLOR(79, 193, 233)
-#define COLOR_BLUE_FH           RGBCOLOR(93, 156, 236)
+/**< 颜色 */
+#define COLOR_CLEAR             [UIColor clearColor]
+#define COLOR_ORANGE            [UIColor orangeColor]
+#define COLOR_GREEN             RGBCOLOR(161, 211, 110)
+#define COLOR_RED               RGBCOLOR(252, 110, 81)
+#define COLOR_BLUE              RGBCOLOR(93, 156, 236)
 #define COLOR_BACKGROUND        RGBCOLOR(242, 242, 242)
-#define COLOR_Line              RGBCOLOR(210,210,221)
-#define COLOE_WHITECOLOR        [UIColor whiteColor]
-#define COLOR_GRAY_FH           RGBCOLORV(0x333333)
+#define COLOR_WHITE             [UIColor whiteColor]
 
 #endif

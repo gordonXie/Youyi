@@ -32,7 +32,7 @@ class PurposeItemView: UIView {
         // Drawing code
         self.backgroundColor = UIColor.whiteColor()
         if isNewItem {//新建
-            self .addSubview(self.createNewButton())
+            self.addSubview(self.createNewButton())
         }else{
             self.createPPView()
         }

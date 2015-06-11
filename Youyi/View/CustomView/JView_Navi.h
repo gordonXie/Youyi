@@ -14,6 +14,9 @@
 
 @interface JView_Navi : UIView
 @property (strong, nonatomic) NSArray* titleArray;
+@property (assign, nonatomic) NSUInteger sum;
 @property (weak, nonatomic) id<JView_NaviDelegate> delegate;
-@property (assign, nonatomic) NSInteger selectedIndex;
+@property (assign, nonatomic) NSUInteger selectedIndex;
+
+- (void)setSelectedIndex:(NSUInteger)index;
 @end

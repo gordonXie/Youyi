@@ -15,13 +15,14 @@
 #import <ShareSDK/ISSContent.h>
 #import <ShareSDK/ISSContainer.h>
 #import "JView_Navi.h"
+#import "JDataManager.h"
 
 #import "CalendarHomeViewController.h"
 #import "CalendarViewController.h"
 #import "Color.h"
 
 
-@interface HomeViewController ()<PPItemViewDelegate>
+@interface HomeViewController ()<PPItemViewDelegate,JView_NaviDelegate,UIScrollViewDelegate>
 {
     UIScrollView    *_baseScrollView;
     NSMutableArray  *_purposeArray;
@@ -51,7 +52,9 @@
 - (void)addBaseScrollView
 {
     _baseScrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _baseScrollView.backgroundColor = COLOR_WHITE;
     _baseScrollView.pagingEnabled = YES;
+    _baseScrollView.delegate = self;
     [self.view addSubview:_baseScrollView];
     
     [self initPurposeArray];
@@ -66,22 +69,27 @@
     [_purposeArray addObject:@"存钱"];
     [_purposeArray addObject:@"新建"];
     
+    JDATAMGR.ppArray = _purposeArray;
     
 }
 - (void)addPurposes
 {
-    for(int i=0;i<_purposeArray.count;i++){
-        if (i==_purposeArray.count-1) {
+    [self addNaviView];
+    
+    for(int i=0;i<JDATAMGR.ppArray.count;i++){
+        if (i==JDATAMGR.ppArray.count-1) {
             //新建
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.isNewItem = YES;
             ppItemView.itemDelegate = self;
+            ppItemView.backgroundColor = COLOR_BACKGROUND;
             [_baseScrollView addSubview:ppItemView];
             
             _baseScrollView.contentSize = CGSizeMake((i+1)*SCREEN_WIDTH, CONTENT_HEIGHT);
         }else{
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.itemDelegate = self;
+            ppItemView.backgroundColor = COLOR_BACKGROUND;
             JModel_Purpose *pp = [[JModel_Purpose alloc]init];
             pp.ppId = 321;
             pp.name = @"测试";
@@ -100,6 +108,19 @@
         }
     }
 }
+
+- (void)addNaviView
+{
+    if (!_naviView) {
+        _naviView = [[JView_Navi alloc]init];
+        _naviView.frame = CGRectMake(0, NAVBAR_HEIGHT+10, SCREEN_WIDTH, 5);
+        _naviView.delegate = self;
+        _naviView.sum = JDATAMGR.ppArray.count;
+        
+        [self.view addSubview:_naviView];
+    }
+}
+
 #pragma mark - 添加意向
 - (void)addNewPurpose
 {
@@ -132,6 +153,7 @@
     [appDelegate.navController pushViewController:purposeCreateVC animated:YES];
 }
 
+#pragma mark -PPItemViewDelegate
 - (void)onActionBtnClick
 {
     
@@ -216,6 +238,13 @@
                                     NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
                                 }
                             }];
+}
+
+#pragma mark - UIScrollViewDelegate
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    NSUInteger index = scrollView.contentOffset.x/SCREEN_WIDTH;
+    [_naviView setSelectedIndex:index];
 }
 
 - (void)didReceiveMemoryWarning {

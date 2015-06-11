@@ -11,18 +11,47 @@
 
 #define BTitleFont [UIFont systemFontOfSize:14]
 #define BTitleColor RGBCOLORV(0x666666)
+#define KNaviSpace 10
 
 @interface JView_Navi ()
 @property (strong, nonatomic) UIView* selectBgView;
 @end
 
 @implementation JView_Navi
-- (void)setSelectedIndex:(NSInteger)selectedIndex {
+@synthesize sum = _sum;
+
+- (void)setSelectedIndex:(NSUInteger)selectedIndex {
     _selectedIndex = selectedIndex;
     UIView* view = [self viewWithTag:1000+selectedIndex];
     [UIView animateWithDuration:0.2 animations:^{
         _selectBgView.center = CGPointMake(view.center.x, _selectBgView.center.y);
     }];
+}
+
+- (void)setSum:(NSUInteger)sum
+{
+    [self setBackgroundColor:[UIColor clearColor]];
+    [self.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    _sum = sum;
+    
+    if (sum<=1) {
+        return;
+    }
+    CGRect rect = CGRectMake(KNaviSpace, 0, (CGRectGetWidth(self.frame)-(sum+1)*KNaviSpace)/sum, CGRectGetHeight(self.frame));
+    
+    for (int i=0;i<sum;i++) {
+        UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+        button.frame = rect;
+        [button setBackgroundColor:[UIColor lightGrayColor]];
+        [button setTag:1000+i];
+//        [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        [self addSubview:button];
+        rect.origin.x += rect.size.width+KNaviSpace;
+    }
+    
+    _selectBgView = [[UIView alloc] initWithFrame:CGRectMake(KNaviSpace, 0, CGRectGetWidth(rect), CGRectGetHeight(self.frame))];
+    [_selectBgView setBackgroundColor:COLOR_ORANGE];
+    [self addSubview:_selectBgView];
 }
 - (void)setTitleArray:(NSArray *)titleArray {
     [self setBackgroundColor:[UIColor whiteColor]];
@@ -47,7 +76,7 @@
         rect.origin.x += rect.size.width;
     }
     _selectBgView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.frame)-2, CGRectGetWidth(rect), 2)];
-    [_selectBgView setBackgroundColor:COLOR_GREEN_FH];
+    [_selectBgView setBackgroundColor:COLOR_GREEN];
     [self addSubview:_selectBgView];
 }
 - (void)buttonAction:(UIButton*)button {

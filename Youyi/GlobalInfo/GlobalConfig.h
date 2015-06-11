@@ -9,6 +9,8 @@
 #ifndef jiajia_GlobalConfig_h
 #define jiajia_GlobalConfig_h
 
+#import "CustomConfig.h"
+
 #pragma mark - 基本信息
 //#define KZFT_TEST    //测试
 #define KAPPVersion   @"1.0"
