@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JModel_Base.h"
 
-@interface JModel_PPForm : NSObject
+@interface JModel_PPForm : JModel_Base
 
 @end

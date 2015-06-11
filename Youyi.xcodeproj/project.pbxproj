@@ -191,8 +191,9 @@
 		06D954D51B2905CE00D937ED /* JDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDataManager.m; sourceTree = "<group>"; };
 		06D954D71B292D0000D937ED /* JView_Navi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JView_Navi.h; sourceTree = "<group>"; };
 		06D954D81B292D0000D937ED /* JView_Navi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JView_Navi.m; sourceTree = "<group>"; };
-		06D954DA1B292F1300D937ED /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		06D954DA1B292F1300D937ED /* Youyi_PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Youyi_PrefixHeader.pch; sourceTree = "<group>"; };
 		06D954DB1B29318B00D937ED /* CustomConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomConfig.h; sourceTree = "<group>"; };
+		06D954DC1B29946E00D937ED /* NotificationConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationConfig.h; sourceTree = "<group>"; };
 		8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		8E183FBE1A1EDEC800220A52 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -689,7 +690,7 @@
 			children = (
 				8E6256A51A08A12100AC79B7 /* Info.plist */,
 				8E6256A61A08A12100AC79B7 /* main.m */,
-				06D954DA1B292F1300D937ED /* PrefixHeader.pch */,
+				06D954DA1B292F1300D937ED /* Youyi_PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -718,6 +719,7 @@
 				8E6256CC1A08A24B00AC79B7 /* MarkedWordsConfig.h */,
 				06D954D41B2905CE00D937ED /* JDataManager.h */,
 				06D954D51B2905CE00D937ED /* JDataManager.m */,
+				06D954DC1B29946E00D937ED /* NotificationConfig.h */,
 			);
 			path = GlobalInfo;
 			sourceTree = "<group>";
@@ -1181,6 +1183,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/Youyi/Youyi_PrefixHeader.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1221,6 +1225,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/Youyi/Youyi_PrefixHeader.pch";
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1283,6 +1289,7 @@
 					"$(PROJECT_DIR)/ShareSDK",
 					"$(PROJECT_DIR)/ShareSDK/UI",
 				);
+				GCC_PREFIX_HEADER = "$(PROJECT_DIR)/Youyi/Youyi_PrefixHeader.pch";
 				INFOPLIST_FILE = Youyi/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

@@ -10,6 +10,8 @@
 #import "UITextField+LabelAndImage.h"
 #import "PurposeTimeSetViewController.h"
 #import "JView_MyPicker.h"
+#import "JModel_Purpose.h"
+#import "JModel_Member.h"
 
 #define KTableCellHeight 42.0
 #define KTableCellLeftSpace 15.0
@@ -21,9 +23,8 @@
 {
     UIScrollView    *_baseScrollView;
     UITextField     *_nameTF;
-    UITextField     *_styleTF;
+    UITextField     *_actionVerbTF;  //个性动作动词
     UITextView      *_descriptionTV;
-    UITextField     *_descriptionTF;
     UIView          *_baseDescView;
     
     UITableView     *_tableView;
@@ -188,16 +189,16 @@
                 break;
             case 1:
             {
-                if (_styleTF==nil) {
-                    _styleTF = [[UITextField alloc]initWithFrame:CGRectMake(KTableCellLeftSpace, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
-                    [_styleTF setBackgroundColor:[UIColor clearColor]];
-                    _styleTF.placeholder = @"显示个性";
-                    _styleTF.delegate = self;
-                    _styleTF.returnKeyType = UIReturnKeyDone;
-                    [_styleTF setLeftLabelWithText:@"action:  "];
+                if (_actionVerbTF==nil) {
+                    _actionVerbTF = [[UITextField alloc]initWithFrame:CGRectMake(KTableCellLeftSpace, 0, SCREEN_WIDTH-KTableCellLeftSpace, KTableCellHeight)];
+                    [_actionVerbTF setBackgroundColor:[UIColor clearColor]];
+                    _actionVerbTF.placeholder = @"显示个性";
+                    _actionVerbTF.delegate = self;
+                    _actionVerbTF.returnKeyType = UIReturnKeyDone;
+                    [_actionVerbTF setLeftLabelWithText:@"个性动词:  "];
                 }
-                _styleTF.hidden = NO;
-                [cell addSubview:_styleTF];
+                _actionVerbTF.hidden = NO;
+                [cell addSubview:_actionVerbTF];
             }
                 break;
             case 2:
@@ -337,49 +338,14 @@
     [_cyclePickerView show];
 }
 
-/*
-#pragma mark - PickerViewDataSource
-//以下3个方法实现PickerView的数据初始化
-//确定picker的轮子个数
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
-    return 1;
-}
-//确定picker的每个轮子的item数
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
-    if (pickerView==_durationPickerView) {
-        return _durationArray.count;
-    }else if(pickerView==_cyclePickerView){
-        return _cycleArray.count;
-    }
-    return [_durationArray count];
-}
-//确定每个轮子的每一项显示什么内容
-#pragma mark 实现协议UIPickerViewDelegate方法
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    if (pickerView==_durationPickerView) {
-        return [_durationArray objectAtIndex:row];
-    }else if(pickerView==_cyclePickerView){
-        return [_cycleArray objectAtIndex:row];
-    }
-    return [_durationArray objectAtIndex:row];
-}
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    if (pickerView==_durationPickerView) {
-        _durationLbl.text =  [_durationArray objectAtIndex:row];
-    }else if(pickerView==_cyclePickerView){
-        _cycleLbl.text =  [_cycleArray objectAtIndex:row];
-    }
-}
-*/
 #pragma mark - UITextViewDelegate
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
-    
+    [textView resignFirstResponder];
 }
 - (void)textViewDidChange:(UITextView *)textView
 {
-    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone ];
+//    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone ];
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -394,6 +360,29 @@
         [self.view makeToast:@"意向的名字不能为空"];
         return;
     }
+    if ([XCommon isNullString:_descriptionTV.text]) {
+        [self.view makeToast:@"意向的描述不能为空"];
+        return;
+    }
+    
+    JModel_Purpose *newPurpose = [[JModel_Purpose alloc]init];
+    newPurpose.name = _nameTF.text;
+    newPurpose.actionVerb = _actionVerbTF.text;
+    newPurpose.ppDesc = _descriptionTV.text;
+    newPurpose.duration = 30;
+    newPurpose.cycle = 30;
+    PTimeSection timeSection = {100,200};
+    newPurpose.timeSection = timeSection;
+    newPurpose.isEnable = YES;
+    newPurpose.memberArray = [NSMutableArray array];
+    
+    JModel_Member *member  = [JModel_Member objectWithDictionary:[NSDictionary dictionaryWithObjectsAndKeys:@"key",@"value", nil]];
+    [newPurpose.memberArray addObject:member];
+    
+    [JDATAMGR.ppArray addObject:newPurpose];
+    [[NSNotificationCenter defaultCenter]postNotificationName:NOTIFICATION_PP_ADD object:nil];
+    
+    [self onLeftBtnClick:nil];
 }
 
 #pragma mark - JView_MyPickerDelegate

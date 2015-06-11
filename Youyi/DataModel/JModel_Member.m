@@ -15,4 +15,9 @@
 @synthesize ppArray = _ppArray;
 @synthesize mobile = _mobile;
 
+- (void)initializeWithDic:(NSDictionary*)dic {
+    self.name = @"测试";
+    self.headUrl = @"";
+}
+
 @end

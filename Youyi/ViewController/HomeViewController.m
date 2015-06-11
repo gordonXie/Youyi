@@ -22,7 +22,7 @@
 #import "Color.h"
 
 
-@interface HomeViewController ()<PPItemViewDelegate,JView_NaviDelegate,UIScrollViewDelegate>
+@interface HomeViewController ()<PPItemViewDelegate,UIScrollViewDelegate>
 {
     UIScrollView    *_baseScrollView;
     NSMutableArray  *_purposeArray;
@@ -39,6 +39,14 @@
     // Do any additional setup after loading the view.
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (_baseScrollView) {
+        [_baseScrollView setNeedsDisplay];
+    }
+}
+
 - (void)initViews
 {
     [super initViews];
@@ -46,7 +54,14 @@
     [self addLeftBtn:@"我的"];
     [self addRightBtn:@"新建"];
     
+    [self addNotification];
     [self addBaseScrollView];
+}
+
+- (void)addNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notiAddPurpose) name:NOTIFICATION_PP_ADD object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPurposeList) name:NOTIFICATION_PP_REFRESH object:nil];
 }
 
 - (void)addBaseScrollView
@@ -58,42 +73,43 @@
     [self.view addSubview:_baseScrollView];
     
     [self initPurposeArray];
+    [self setNaviView];
     //添加"意向"
     [self addPurposes];
 }
 - (void)initPurposeArray
 {
     _purposeArray = [[NSMutableArray alloc]initWithCapacity:5];
-    [_purposeArray addObject:@"学习"];
-    [_purposeArray addObject:@"塑身"];
-    [_purposeArray addObject:@"存钱"];
-    [_purposeArray addObject:@"新建"];
+//    [_purposeArray addObject:@"学习"];
+//    [_purposeArray addObject:@"塑身"];
+//    [_purposeArray addObject:@"存钱"];
+//    [_purposeArray addObject:@"新建"];
     
     JDATAMGR.ppArray = _purposeArray;
     
 }
 - (void)addPurposes
 {
-    [self addNaviView];
-    
+    _baseScrollView.contentSize = CGSizeMake(JDATAMGR.ppArray.count*SCREEN_WIDTH, CONTENT_HEIGHT);
     for(int i=0;i<JDATAMGR.ppArray.count;i++){
-        if (i==JDATAMGR.ppArray.count-1) {
-            //新建
-            PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
-            ppItemView.isNewItem = YES;
-            ppItemView.itemDelegate = self;
-            ppItemView.backgroundColor = COLOR_BACKGROUND;
-            [_baseScrollView addSubview:ppItemView];
-            
-            _baseScrollView.contentSize = CGSizeMake((i+1)*SCREEN_WIDTH, CONTENT_HEIGHT);
-        }else{
+//        if (i==JDATAMGR.ppArray.count-1) {
+//            //新建
+//            PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
+//            ppItemView.isNewItem = YES;
+//            ppItemView.itemDelegate = self;
+//            ppItemView.backgroundColor = COLOR_BACKGROUND;
+//            [_baseScrollView addSubview:ppItemView];
+//            
+//            
+//        }else
+        {
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.itemDelegate = self;
             ppItemView.backgroundColor = COLOR_BACKGROUND;
             JModel_Purpose *pp = [[JModel_Purpose alloc]init];
             pp.ppId = 321;
             pp.name = @"测试";
-            pp.style = @"过";
+            pp.actionVerb = @"过";
             
             pp.memberArray = [[NSMutableArray alloc]initWithCapacity:3];
             for (int i = 0; i<1; i++) {
@@ -109,15 +125,16 @@
     }
 }
 
-- (void)addNaviView
+- (void)setNaviView
 {
     if (!_naviView) {
         _naviView = [[JView_Navi alloc]init];
         _naviView.frame = CGRectMake(0, NAVBAR_HEIGHT+10, SCREEN_WIDTH, 5);
-        _naviView.delegate = self;
         _naviView.sum = JDATAMGR.ppArray.count;
         
         [self.view addSubview:_naviView];
+    }else{
+        _naviView.sum = JDATAMGR.ppArray.count;
     }
 }
 
@@ -245,6 +262,30 @@
 {
     NSUInteger index = scrollView.contentOffset.x/SCREEN_WIDTH;
     [_naviView setSelectedIndex:index];
+    
+    
+}
+
+#pragma mark - NotificationCenter
+- (void)notiAddPurpose
+{
+    const NSUInteger count = JDATAMGR.ppArray.count;
+    PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake((count-1)*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
+    ppItemView.itemDelegate = self;
+    ppItemView.backgroundColor = COLOR_BACKGROUND;
+    ppItemView.ppItem = [JDATAMGR.ppArray objectAtIndex:count-1];
+    
+    [_baseScrollView addSubview:ppItemView];
+    _baseScrollView.contentSize = CGSizeMake(count*SCREEN_WIDTH, CONTENT_HEIGHT);
+    [_baseScrollView setContentOffset:CGPointMake((count-1)*SCREEN_WIDTH, SCREEN_HEIGHT) animated:YES];
+
+    [self setNaviView];
+    [_naviView setSelectedIndex:count-1];
+    [self.view setNeedsDisplay];
+}
+- (void)refreshPurposeList
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

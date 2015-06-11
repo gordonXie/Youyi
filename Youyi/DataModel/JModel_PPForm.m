@@ -9,5 +9,8 @@
 #import "JModel_PPForm.h"
 
 @implementation JModel_PPForm
+- (void)initializeWithDic:(NSDictionary*)dic {
+    
+}
 
 @end

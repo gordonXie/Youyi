@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JModel_Base.h"
 
-@interface JModel_Member : NSObject
+@interface JModel_Member : JModel_Base
 @property (nonatomic,assign) NSUInteger mId;        //成员编号
 @property (nonatomic,strong) NSString   *name;      //成员名称
 @property (nonatomic,strong) NSString   *mobile;    //成员手机号

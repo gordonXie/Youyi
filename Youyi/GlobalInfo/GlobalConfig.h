@@ -10,6 +10,7 @@
 #define jiajia_GlobalConfig_h
 
 #import "CustomConfig.h"
+#import "NotificationConfig.h"
 
 #pragma mark - 基本信息
 //#define KZFT_TEST    //测试
