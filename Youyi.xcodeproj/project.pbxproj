@@ -30,6 +30,8 @@
 		06D954C81B283E9800D937ED /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954B71B283E9800D937ED /* UIWebView+AFNetworking.m */; };
 		06D954CB1B283F4900D937ED /* AFNetworkReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954CA1B283F4900D937ED /* AFNetworkReachability.m */; };
 		06D954D31B2876C400D937ED /* JView_MyPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954D21B2876C400D937ED /* JView_MyPicker.m */; };
+		06D954D61B2905CE00D937ED /* JDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954D51B2905CE00D937ED /* JDataManager.m */; };
+		06D954D91B292D0000D937ED /* JView_Navi.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954D81B292D0000D937ED /* JView_Navi.m */; };
 		8E183FE11A1EDEC800220A52 /* CopyConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */; };
 		8E183FE21A1EDEC800220A52 /* FacebookConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */; };
 		8E183FE31A1EDEC800220A52 /* MailConnection.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E183FBE1A1EDEC800220A52 /* MailConnection.framework */; };
@@ -185,6 +187,12 @@
 		06D954CA1B283F4900D937ED /* AFNetworkReachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkReachability.m; sourceTree = "<group>"; };
 		06D954D11B2876C400D937ED /* JView_MyPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JView_MyPicker.h; sourceTree = "<group>"; };
 		06D954D21B2876C400D937ED /* JView_MyPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JView_MyPicker.m; sourceTree = "<group>"; };
+		06D954D41B2905CE00D937ED /* JDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JDataManager.h; sourceTree = "<group>"; };
+		06D954D51B2905CE00D937ED /* JDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JDataManager.m; sourceTree = "<group>"; };
+		06D954D71B292D0000D937ED /* JView_Navi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JView_Navi.h; sourceTree = "<group>"; };
+		06D954D81B292D0000D937ED /* JView_Navi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JView_Navi.m; sourceTree = "<group>"; };
+		06D954DA1B292F1300D937ED /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		06D954DB1B29318B00D937ED /* CustomConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomConfig.h; sourceTree = "<group>"; };
 		8E183FBC1A1EDEC800220A52 /* CopyConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CopyConnection.framework; sourceTree = "<group>"; };
 		8E183FBD1A1EDEC800220A52 /* FacebookConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookConnection.framework; sourceTree = "<group>"; };
 		8E183FBE1A1EDEC800220A52 /* MailConnection.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MailConnection.framework; sourceTree = "<group>"; };
@@ -477,6 +485,9 @@
 			isa = PBXGroup;
 			children = (
 				06D954D01B2876C400D937ED /* MyPicker */,
+				06D954D71B292D0000D937ED /* JView_Navi.h */,
+				06D954D81B292D0000D937ED /* JView_Navi.m */,
+				06D954DB1B29318B00D937ED /* CustomConfig.h */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -678,6 +689,7 @@
 			children = (
 				8E6256A51A08A12100AC79B7 /* Info.plist */,
 				8E6256A61A08A12100AC79B7 /* main.m */,
+				06D954DA1B292F1300D937ED /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -704,6 +716,8 @@
 			children = (
 				8E6256CB1A08A24B00AC79B7 /* GlobalConfig.h */,
 				8E6256CC1A08A24B00AC79B7 /* MarkedWordsConfig.h */,
+				06D954D41B2905CE00D937ED /* JDataManager.h */,
+				06D954D51B2905CE00D937ED /* JDataManager.m */,
 			);
 			path = GlobalInfo;
 			sourceTree = "<group>";
@@ -1041,6 +1055,7 @@
 				8E6256AA1A08A12100AC79B7 /* AppDelegate.m in Sources */,
 				8E5E36651A3A9DED009CB1DF /* CalendarMonthCollectionViewLayout.m in Sources */,
 				8E6257481A08A24B00AC79B7 /* NSObject+PGPerformSelectorOnMainThreadWithThreeObjects.m in Sources */,
+				06D954D61B2905CE00D937ED /* JDataManager.m in Sources */,
 				8E6257491A08A24B00AC79B7 /* NSString+Base64.m in Sources */,
 				06D954B81B283E9800D937ED /* AFHTTPRequestOperation.m in Sources */,
 				06D954BB1B283E9800D937ED /* AFNetworkReachabilityManager.m in Sources */,
@@ -1088,6 +1103,7 @@
 				8E5143871A25651100EAC511 /* UserCenterViewController.swift in Sources */,
 				8E5E36661A3A9DED009CB1DF /* CalendarMonthHeaderView.m in Sources */,
 				8E62574A1A08A24B00AC79B7 /* Toast+UIView.m in Sources */,
+				06D954D91B292D0000D937ED /* JView_Navi.m in Sources */,
 				8E5E36671A3A9DED009CB1DF /* CalendarViewController.m in Sources */,
 				8E62575B1A08A24B00AC79B7 /* UIScrollView+MJRefresh.m in Sources */,
 				8E6257651A08A24B00AC79B7 /* UIButton+WebCache.m in Sources */,

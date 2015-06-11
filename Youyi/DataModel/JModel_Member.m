@@ -13,5 +13,6 @@
 @synthesize name = _name;
 @synthesize headUrl = _headUrl;
 @synthesize ppArray = _ppArray;
+@synthesize mobile = _mobile;
 
 @end

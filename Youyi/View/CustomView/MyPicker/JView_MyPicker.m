@@ -7,13 +7,9 @@
 //
 
 #import "JView_MyPicker.h"
+#import "CustomConfig.h"
 
-#define RGBCOLORP(rgbValue) [UIColor \
-colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0x00FF00) >> 8))/255.0 \
-blue:((float)(rgbValue & 0x0000FF))/255.0 \
-alpha:1.0]
-#define P_Bg_Color RGBCOLORP(0x666666)
+#define P_Bg_Color RGBCOLORV(0x666666)
 
 //屏幕的宽度
 #define PScreenWidth ([UIScreen mainScreen].bounds.size.width)

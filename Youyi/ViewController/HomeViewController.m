@@ -14,6 +14,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <ShareSDK/ISSContent.h>
 #import <ShareSDK/ISSContainer.h>
+#import "JView_Navi.h"
 
 #import "CalendarHomeViewController.h"
 #import "CalendarViewController.h"
@@ -24,6 +25,7 @@
 {
     UIScrollView    *_baseScrollView;
     NSMutableArray  *_purposeArray;
+    JView_Navi      *_naviView;
     
     CalendarHomeViewController *chvc;
 }
@@ -41,7 +43,7 @@
     [super initViews];
     [self setTitle:@"新建意向"];
     [self addLeftBtn:@"我的"];
-    [self addRightBtn:@"广场"];
+    [self addRightBtn:@"新建"];
     
     [self addBaseScrollView];
 }
@@ -60,9 +62,11 @@
 {
     _purposeArray = [[NSMutableArray alloc]initWithCapacity:5];
     [_purposeArray addObject:@"学习"];
-//    [_purposeArray addObject:@"塑身"];
-//    [_purposeArray addObject:@"存钱"];
+    [_purposeArray addObject:@"塑身"];
+    [_purposeArray addObject:@"存钱"];
     [_purposeArray addObject:@"新建"];
+    
+    
 }
 - (void)addPurposes
 {
@@ -84,7 +88,7 @@
             pp.style = @"过";
             
             pp.memberArray = [[NSMutableArray alloc]initWithCapacity:3];
-            for (int i = 0; i<4; i++) {
+            for (int i = 0; i<1; i++) {
                 JModel_Member *member = [[JModel_Member alloc]init];
                 member.mId = 322;
                 member.name = @"腾";
@@ -128,9 +132,19 @@
     [appDelegate.navController pushViewController:purposeCreateVC animated:YES];
 }
 
-- (void)onMemberBtnClick:(NSInteger)index
+- (void)onActionBtnClick
 {
     
+}
+
+- (void)onActionBtnLongPress
+{
+    
+}
+
+- (void)onMemberBtnClick:(NSInteger)index
+{
+    NSLog(@"member %ld",index);
 }
 
 - (void)onRecordBtnClick
