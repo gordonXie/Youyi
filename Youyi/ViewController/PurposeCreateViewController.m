@@ -48,6 +48,7 @@
 @synthesize timeSectionEnd = _timeSectionEnd;
 @synthesize timeSectionStart = _timeSectionStart;
 @synthesize homeVC;
+@synthesize purpose = _purpose;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -57,9 +58,15 @@
 - (void)initViews
 {
     [super initViews];
-    [self setTitle:@"新建意向"];
+    if (!_purpose) {
+        [self setTitle:@"新建意向"];
+        [self addRightBtn:@"保存"];
+    }else{
+        [self setTitle:_purpose.name];
+    }
+
     [self addLeftBtn:@"返回"];
-    [self addRightBtn:@"保存"];
+
     
     [self addBaseScrollView];
 }
@@ -182,6 +189,9 @@
                     _nameTF.delegate = self;
                     _nameTF.returnKeyType = UIReturnKeyDone;
                     [_nameTF setLeftLabelWithText:@"名称:  "];
+                    if (_purpose) {
+                        _nameTF.text = _purpose.name;
+                    }
                 }
                 _nameTF.hidden = NO;
                 [cell addSubview:_nameTF];
@@ -196,6 +206,9 @@
                     _actionVerbTF.delegate = self;
                     _actionVerbTF.returnKeyType = UIReturnKeyDone;
                     [_actionVerbTF setLeftLabelWithText:@"个性动词:  "];
+                    if (_purpose) {
+                        _actionVerbTF.text = _purpose.actionVerb;
+                    }
                 }
                 _actionVerbTF.hidden = NO;
                 [cell addSubview:_actionVerbTF];
@@ -284,6 +297,9 @@
         _descriptionTV.font = [UIFont systemFontOfSize:KDescTextViewFontSize];
         _descriptionTV.returnKeyType = UIReturnKeyDone;
         _descriptionTV.text = @"意向简单描述";
+        if (_purpose&&![XCommon isBlankString:_purpose.ppDesc]) {
+            _descriptionTV.text = _purpose.ppDesc;
+        }
         [_baseDescView addSubview:_descriptionTV];
     }else{
         [_descriptionTV setFrame:CGRectMake(_descriptionTV.frame.origin.x, _descriptionTV.frame.origin.y, _descriptionTV.frame.size.width, [XCommon heightForString:_descriptionTV.text fontSize:KDescTextViewFontSize andWidth:_descriptionTV.frame.size.width])];

@@ -29,6 +29,7 @@
     UIScrollView    *_baseScrollView;
     JView_Navi      *_naviView;
     NSUInteger      _currentIndex;
+    BOOL            _isJoin;
     
     CalendarHomeViewController *chvc;
 }
@@ -55,6 +56,7 @@
     [self addRightBtn:@"新建"];
     
     _currentIndex = 0;
+    _isJoin = YES;
     [self addNotification];
     [self addBaseScrollView];
 }
@@ -175,21 +177,51 @@
 - (void)onActionBtnLongPress
 {
     __weak typeof(self) weakSelf = self;
-    [OHAlertView showAlertWithTitle:@"提示" message:@"你确定要加入该意向吗？" cancelButton:@"取消" okButton:@"确定" buttonHandler:^(OHAlertView *alert, NSInteger buttonIndex) {
-        if (buttonIndex!=0) {
-            [weakSelf joinPurpose];
-        }
-    }];
+    if (_isJoin) {
+        [OHAlertView showAlertWithTitle:@"提示" message:@"你确定要加入该意向吗？" cancelButton:@"取消" okButton:@"确定" buttonHandler:^(OHAlertView *alert, NSInteger buttonIndex) {
+            if (buttonIndex!=0) {
+                [weakSelf joinPurpose];
+            }
+        }];
+    }else{
+        [OHAlertView showAlertWithTitle:@"提示" message:@"你确定要退出该意向吗？" cancelButton:@"取消" okButton:@"确定" buttonHandler:^(OHAlertView *alert, NSInteger buttonIndex) {
+            if (buttonIndex!=0) {
+                [weakSelf quitPurpose];
+            }
+        }];
+    }
+
 }
 //加入意向
 - (void)joinPurpose
 {
     JModel_Purpose *purpose = [JDATAMGR.ppArray objectAtIndex:_currentIndex];
+
     JModel_Member *member = [JModel_Member objectWithDictionary:[NSMutableDictionary dictionary]];
     [purpose.memberArray addObject:member];
     
     PurposeItemView *ppItemView = (PurposeItemView*)[_baseScrollView viewWithTag:_currentIndex+KBasePPItemViewTag];
     ppItemView.ppItem = purpose;
+    
+    if(purpose.memberArray.count>=8)
+    {
+        _isJoin = NO;
+    }
+}
+
+//退出意向
+- (void)quitPurpose
+{
+    JModel_Purpose *purpose = [JDATAMGR.ppArray objectAtIndex:_currentIndex];
+    
+    [purpose.memberArray removeObjectAtIndex:purpose.memberArray.count-1];
+    
+    PurposeItemView *ppItemView = (PurposeItemView*)[_baseScrollView viewWithTag:_currentIndex+KBasePPItemViewTag];
+    ppItemView.ppItem = purpose;
+    
+    if(purpose.memberArray.count<=1){
+        _isJoin = YES;
+    }
 }
 
 - (void)onMemberBtnClick:(NSInteger)index
@@ -199,6 +231,12 @@
 
 - (void)onRecordBtnClick
 {
+    PurposeCreateViewController *ppCreateVC = [[PurposeCreateViewController alloc]init];
+    JModel_Purpose *purpose = [JDATAMGR.ppArray objectAtIndex:_currentIndex];
+    ppCreateVC.purpose = purpose;
+    [appDelegate.navController pushViewController:ppCreateVC animated:YES];
+    
+    /*
     if (!chvc) {
         
         chvc = [[CalendarHomeViewController alloc]init];
@@ -229,6 +267,7 @@
     };
     
     [self.navigationController pushViewController:chvc animated:YES];
+*/
     
 }
 
