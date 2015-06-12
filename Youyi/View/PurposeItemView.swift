@@ -22,9 +22,13 @@ let pi:CGFloat = 3.1415926
 class PurposeItemView: UIView {
     
     var isNewItem:Bool = false
-    var purpose:JModel_Purpose?
+//    var purpose:JModel_Purpose?
     var itemDelegate:PPItemViewDelegate?
-    var ppItem:JModel_Purpose?
+    var ppItem:JModel_Purpose?{
+        didSet{
+            self.setNeedsDisplay()
+        }
+    }
     
     // Only override drawRect: if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -34,6 +38,11 @@ class PurposeItemView: UIView {
         if isNewItem {//新建
             self.addSubview(self.createNewButton())
         }else{
+//            self.subviews.map {$0.removeFromSuperview }
+            for view in self.subviews {
+                view.removeFromSuperview()
+            }
+            
             self.createPPView()
         }
     }
@@ -54,14 +63,17 @@ class PurposeItemView: UIView {
     }
     
     func createPPView(){
+        
         //添加动作按钮
         var actionBtn = UIButton()
         let btnSize:CGFloat = 80.0
         let selfFrame = self.frame
         var frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
         actionBtn.frame = frame
-        actionBtn.setImage(UIImage (named:"addNew"), forState: UIControlState.Normal)
-        actionBtn.setImage(UIImage (named: "share"), forState: UIControlState.Highlighted)
+        actionBtn.setBackgroundImage(UIImage (named:"addNew"), forState: UIControlState.Normal)
+        actionBtn.setBackgroundImage(UIImage (named: "share"), forState: UIControlState.Highlighted)
+        actionBtn.setTitle(ppItem?.actionVerb, forState: UIControlState.Normal)
+        actionBtn.setTitleColor(UIColor.blueColor(), forState: UIControlState.Normal)
 //        actionBtn.addTarget(self, action: "onActionBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(actionBtn)
         //添加单击手势
@@ -69,8 +81,9 @@ class PurposeItemView: UIView {
         singleGesture.numberOfTapsRequired=1
         actionBtn.addGestureRecognizer(singleGesture)
         //添加长按手势 用来操作该意向(申请加入，退出或关闭(外人，内人，主人))
-        var longPress = UILongPressGestureRecognizer(target: self, action: "onActionBtnLongPress")
-        longPress.numberOfTouchesRequired = 1
+        var longPress = UILongPressGestureRecognizer(target: self, action: "onActionBtnLongPress:")
+//        longPress.numberOfTouchesRequired = 1
+        longPress.minimumPressDuration = 1.0
         actionBtn.addGestureRecognizer(longPress)
         
         //添加成员显示
@@ -125,6 +138,7 @@ class PurposeItemView: UIView {
             membBtn.setBackgroundImage(UIImage (named: "share"), forState: UIControlState.Normal)
             membBtn.setTitle("\(i)", forState: UIControlState.Normal)
             membBtn.tag = MEMBERBTN_BASETAG+i;
+            membBtn.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
             membBtn.addTarget(self, action: "onMemberBtnClick:", forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(membBtn)
             
@@ -140,8 +154,11 @@ class PurposeItemView: UIView {
     func onActionBtnClick(){
         itemDelegate?.onActionBtnClick?()
     }
-    func onActionBtnLongPress(){
-        itemDelegate?.onActionBtnLongPress?()
+    func onActionBtnLongPress(gestureRecognizer:UILongPressGestureRecognizer){
+        if(gestureRecognizer.state == UIGestureRecognizerState.Began)
+        {
+            itemDelegate?.onActionBtnLongPress?()   
+        }
     }
     func onRecordBtnClick(){
         itemDelegate?.onRecordBtnClick?()

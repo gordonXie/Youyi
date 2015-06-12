@@ -283,6 +283,7 @@
         _descriptionTV.bounces = NO;
         _descriptionTV.font = [UIFont systemFontOfSize:KDescTextViewFontSize];
         _descriptionTV.returnKeyType = UIReturnKeyDone;
+        _descriptionTV.text = @"意向简单描述";
         [_baseDescView addSubview:_descriptionTV];
     }else{
         [_descriptionTV setFrame:CGRectMake(_descriptionTV.frame.origin.x, _descriptionTV.frame.origin.y, _descriptionTV.frame.size.width, [XCommon heightForString:_descriptionTV.text fontSize:KDescTextViewFontSize andWidth:_descriptionTV.frame.size.width])];
@@ -346,6 +347,15 @@
 - (void)textViewDidChange:(UITextView *)textView
 {
 //    [_tableView reloadRowsAtIndexPaths:[NSArray arrayWithObjects:[NSIndexPath indexPathForRow:2 inSection:0], nil] withRowAnimation:UITableViewRowAnimationNone ];
+}
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if ([text isEqualToString:@"\n"]){ //判断输入的字是否是回车，即按下return
+        //在这里做你响应return键的代码
+        [textView resignFirstResponder];
+        return NO; //这里返回NO，就代表return键值失效，即页面上按下return，不会出现换行，如果为yes，则输入页面会换行
+    }
+    
+    return YES;
 }
 #pragma mark - UITextFieldDelegate
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

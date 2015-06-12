@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		061B4E331B29DBBC006A287F /* OHAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 061B4E321B29DBBC006A287F /* OHAlertView.m */; };
 		06D9548D1B283BDD00D937ED /* JModel_Member.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954861B283BDD00D937ED /* JModel_Member.m */; };
 		06D9548E1B283BDD00D937ED /* JModel_Base.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D954881B283BDD00D937ED /* JModel_Base.m */; };
 		06D9548F1B283BDD00D937ED /* JModel_PPForm.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D9548A1B283BDD00D937ED /* JModel_PPForm.m */; };
@@ -139,6 +140,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		061B4E311B29DBBC006A287F /* OHAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OHAlertView.h; sourceTree = "<group>"; };
+		061B4E321B29DBBC006A287F /* OHAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OHAlertView.m; sourceTree = "<group>"; };
 		06D954851B283BDD00D937ED /* JModel_Member.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_Member.h; sourceTree = "<group>"; };
 		06D954861B283BDD00D937ED /* JModel_Member.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JModel_Member.m; sourceTree = "<group>"; };
 		06D954871B283BDD00D937ED /* JModel_Base.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JModel_Base.h; sourceTree = "<group>"; };
@@ -406,6 +409,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		061B4E301B29DBBC006A287F /* OHAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				061B4E311B29DBBC006A287F /* OHAlertView.h */,
+				061B4E321B29DBBC006A287F /* OHAlertView.m */,
+			);
+			path = OHAlertView;
+			sourceTree = "<group>";
+		};
 		06D954841B283BDD00D937ED /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -727,6 +739,7 @@
 		8E6256CD1A08A24B00AC79B7 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
+				061B4E301B29DBBC006A287F /* OHAlertView */,
 				06D954911B283E9800D937ED /* AFNetworking */,
 				8E5E364E1A3A9DED009CB1DF /* ZFCalendar */,
 				8E6256E81A08A24B00AC79B7 /* Common */,
@@ -1037,6 +1050,7 @@
 				8E6257631A08A24B00AC79B7 /* SDWebImageManager.m in Sources */,
 				8E6257591A08A24B00AC79B7 /* MJRefreshHeaderView.m in Sources */,
 				8E62574C1A08A24B00AC79B7 /* UIView+SuperView.m in Sources */,
+				061B4E331B29DBBC006A287F /* OHAlertView.m in Sources */,
 				8E5E36631A3A9DED009CB1DF /* CalendarHomeViewController.m in Sources */,
 				06D9548D1B283BDD00D937ED /* JModel_Member.m in Sources */,
 				8E6257661A08A24B00AC79B7 /* UIImageView+WebCache.m in Sources */,

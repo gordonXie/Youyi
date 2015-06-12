@@ -16,17 +16,19 @@
 #import <ShareSDK/ISSContainer.h>
 #import "JView_Navi.h"
 #import "JDataManager.h"
+#import "OHAlertView.h"
 
 #import "CalendarHomeViewController.h"
 #import "CalendarViewController.h"
 #import "Color.h"
 
+#define KBasePPItemViewTag 200
 
 @interface HomeViewController ()<PPItemViewDelegate,UIScrollViewDelegate>
 {
     UIScrollView    *_baseScrollView;
-    NSMutableArray  *_purposeArray;
     JView_Navi      *_naviView;
+    NSUInteger      _currentIndex;
     
     CalendarHomeViewController *chvc;
 }
@@ -42,9 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (_baseScrollView) {
-        [_baseScrollView setNeedsDisplay];
-    }
+
 }
 
 - (void)initViews
@@ -54,6 +54,7 @@
     [self addLeftBtn:@"我的"];
     [self addRightBtn:@"新建"];
     
+    _currentIndex = 0;
     [self addNotification];
     [self addBaseScrollView];
 }
@@ -72,20 +73,14 @@
     _baseScrollView.delegate = self;
     [self.view addSubview:_baseScrollView];
     
-    [self initPurposeArray];
+//    [self initPurposeArray];
     [self setNaviView];
     //添加"意向"
     [self addPurposes];
 }
 - (void)initPurposeArray
 {
-    _purposeArray = [[NSMutableArray alloc]initWithCapacity:5];
-//    [_purposeArray addObject:@"学习"];
-//    [_purposeArray addObject:@"塑身"];
-//    [_purposeArray addObject:@"存钱"];
-//    [_purposeArray addObject:@"新建"];
-    
-    JDATAMGR.ppArray = _purposeArray;
+    JDATAMGR.ppArray = [NSMutableArray array];
     
 }
 - (void)addPurposes
@@ -106,6 +101,7 @@
             PurposeItemView *ppItemView = [[PurposeItemView alloc]initWithFrame:CGRectMake(i*SCREEN_WIDTH, 0, SCREEN_WIDTH, CONTENT_HEIGHT)];
             ppItemView.itemDelegate = self;
             ppItemView.backgroundColor = COLOR_BACKGROUND;
+            ppItemView.tag = i+KBasePPItemViewTag;
             JModel_Purpose *pp = [[JModel_Purpose alloc]init];
             pp.ppId = 321;
             pp.name = @"测试";
@@ -178,12 +174,27 @@
 
 - (void)onActionBtnLongPress
 {
+    __weak typeof(self) weakSelf = self;
+    [OHAlertView showAlertWithTitle:@"提示" message:@"你确定要加入该意向吗？" cancelButton:@"取消" okButton:@"确定" buttonHandler:^(OHAlertView *alert, NSInteger buttonIndex) {
+        if (buttonIndex!=0) {
+            [weakSelf joinPurpose];
+        }
+    }];
+}
+//加入意向
+- (void)joinPurpose
+{
+    JModel_Purpose *purpose = [JDATAMGR.ppArray objectAtIndex:_currentIndex];
+    JModel_Member *member = [JModel_Member objectWithDictionary:[NSMutableDictionary dictionary]];
+    [purpose.memberArray addObject:member];
     
+    PurposeItemView *ppItemView = (PurposeItemView*)[_baseScrollView viewWithTag:_currentIndex+KBasePPItemViewTag];
+    ppItemView.ppItem = purpose;
 }
 
 - (void)onMemberBtnClick:(NSInteger)index
 {
-    NSLog(@"member %ld",index);
+    NSLog(@"member %ld",(long)index);
 }
 
 - (void)onRecordBtnClick
@@ -260,10 +271,9 @@
 #pragma mark - UIScrollViewDelegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
-    NSUInteger index = scrollView.contentOffset.x/SCREEN_WIDTH;
-    [_naviView setSelectedIndex:index];
-    
-    
+    _currentIndex = scrollView.contentOffset.x/SCREEN_WIDTH;
+    [_naviView setSelectedIndex:_currentIndex];
+    self.title = ((JModel_Purpose*)[JDATAMGR.ppArray objectAtIndex:_currentIndex]).name;
 }
 
 #pragma mark - NotificationCenter
@@ -274,17 +284,21 @@
     ppItemView.itemDelegate = self;
     ppItemView.backgroundColor = COLOR_BACKGROUND;
     ppItemView.ppItem = [JDATAMGR.ppArray objectAtIndex:count-1];
+    ppItemView.tag = KBasePPItemViewTag+count-1;
     
     [_baseScrollView addSubview:ppItemView];
     _baseScrollView.contentSize = CGSizeMake(count*SCREEN_WIDTH, CONTENT_HEIGHT);
     [_baseScrollView setContentOffset:CGPointMake((count-1)*SCREEN_WIDTH, SCREEN_HEIGHT) animated:YES];
 
+    _currentIndex = count-1;
     [self setNaviView];
-    [_naviView setSelectedIndex:count-1];
-    [self.view setNeedsDisplay];
+    [_naviView setSelectedIndex:_currentIndex];
+    self.title = ((JModel_Purpose*)[JDATAMGR.ppArray objectAtIndex:_currentIndex]).name;
+    [_baseScrollView sizeToFit];
 }
 - (void)refreshPurposeList
 {
+   
     
 }
 
