@@ -19,13 +19,43 @@
  */
 + (float) heightForString:(NSString *)value fontSize:(float)fontSize andWidth:(float)width
 {
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    CGSize sizeToFit;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=8.0) {
+        NSMutableParagraphStyle* paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        
+        paragraphStyle.lineBreakMode=NSLineBreakByWordWrapping;
+        
+        NSDictionary* attributes =@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSParagraphStyleAttributeName:paragraphStyle.copy};
+        
+        sizeToFit = [value boundingRectWithSize:CGSizeMake(width, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        
+        sizeToFit.height=ceil(sizeToFit.height);
+        sizeToFit.width=ceil(sizeToFit.width);
+    }else{
+        sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(width, CGFLOAT_MAX) lineBreakMode:NSLineBreakByCharWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    }
+    
     return sizeToFit.height;
 }
 
 + (float) widthForString:(NSString *)value fontSize:(float)fontSize
 {
-    CGSize sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    CGSize sizeToFit;
+    if ([[[UIDevice currentDevice] systemVersion] floatValue]>=8.0) {
+        NSMutableParagraphStyle* paragraphStyle = [[NSMutableParagraphStyle alloc]init];
+        
+        paragraphStyle.lineBreakMode=NSLineBreakByWordWrapping;
+        
+        NSDictionary* attributes =@{NSFontAttributeName:[UIFont systemFontOfSize:fontSize],NSParagraphStyleAttributeName:paragraphStyle.copy};
+        
+        sizeToFit = [value boundingRectWithSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingTruncatesLastVisibleLine attributes:attributes context:nil].size;
+        
+        sizeToFit.height=ceil(sizeToFit.height);
+        sizeToFit.width=ceil(sizeToFit.width);
+    }else{
+        sizeToFit = [value sizeWithFont:[UIFont systemFontOfSize:fontSize] constrainedToSize:CGSizeMake(CGFLOAT_MAX, CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];//此处的换行类型（lineBreakMode）可根据自己的实际情况进行设置
+    }
+    
     return sizeToFit.width;
 }
 
