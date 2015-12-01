@@ -981,6 +981,8 @@
 		8E6256991A08A12100AC79B7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = xieguocheng;
 				TargetAttributes = {
@@ -1260,6 +1262,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guocheng Xie (PFEM6M5HW8)";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1279,9 +1282,10 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.youyi.youyi;
 				PRODUCT_MODULE_NAME = SwiftModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8a0c936f-4869-49ca-bc46-b8d0f149a413";
+				PROVISIONING_PROFILE = "65383500-6489-4d08-a12f-703760785edb";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Youyi/View/Youyi-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1294,6 +1298,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: Guocheng Xie (PFEM6M5HW8)";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1314,9 +1319,10 @@
 					"$(PROJECT_DIR)/ShareSDK/Extend/TencentWeiboSDK",
 					"$(PROJECT_DIR)/ShareSDK/Extend/WeChatSDK",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.youyi.youyi;
 				PRODUCT_MODULE_NAME = SwiftModule;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8a0c936f-4869-49ca-bc46-b8d0f149a413";
+				PROVISIONING_PROFILE = "65383500-6489-4d08-a12f-703760785edb";
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Youyi/View/Youyi-Bridging-Header.h";
 			};

@@ -48,10 +48,10 @@ class PurposeItemView: UIView {
     }
 
     func createNewButton()->UIButton{
-        var newBtn = UIButton()
+        let newBtn = UIButton()
         let btnSize:CGFloat = 80.0
         let selfFrame = self.frame
-        var frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
+        let frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
         newBtn.frame = frame
         newBtn.setImage(UIImage (named:"addNew"), forState: UIControlState.Normal)
         newBtn.addTarget(self, action: "onNewBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
@@ -63,12 +63,11 @@ class PurposeItemView: UIView {
     }
     
     func createPPView(){
-        
         //添加动作按钮
-        var actionBtn = UIButton()
+        let actionBtn = UIButton()
         let btnSize:CGFloat = 80.0
         let selfFrame = self.frame
-        var frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
+        let frame = CGRectMake((selfFrame.size.width-btnSize)/2.0,(selfFrame.size.height-btnSize)/2.0-20,btnSize,btnSize)
         actionBtn.frame = frame
         actionBtn.setBackgroundImage(UIImage (named:"addNew"), forState: UIControlState.Normal)
         actionBtn.setBackgroundImage(UIImage (named: "share"), forState: UIControlState.Highlighted)
@@ -77,11 +76,11 @@ class PurposeItemView: UIView {
 //        actionBtn.addTarget(self, action: "onActionBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(actionBtn)
         //添加单击手势
-        var singleGesture = UITapGestureRecognizer(target: self, action: "onActionBtnClick")
+        let singleGesture = UITapGestureRecognizer(target: self, action: "onActionBtnClick")
         singleGesture.numberOfTapsRequired=1
         actionBtn.addGestureRecognizer(singleGesture)
         //添加长按手势 用来操作该意向(申请加入，退出或关闭(外人，内人，主人))
-        var longPress = UILongPressGestureRecognizer(target: self, action: "onActionBtnLongPress:")
+        let longPress = UILongPressGestureRecognizer(target: self, action: "onActionBtnLongPress:")
 //        longPress.numberOfTouchesRequired = 1
         longPress.minimumPressDuration = 1.0
         actionBtn.addGestureRecognizer(longPress)
@@ -90,18 +89,18 @@ class PurposeItemView: UIView {
         self.addItemMembers(actionBtn.center)
         
         //添加记录按钮
-        var recordBtn = UIButton()
+        let recordBtn = UIButton()
         let recordBtnEdge:CGFloat = 20.0
         let recordBtnSize:CGFloat = 40.0
-        var recordFrame = CGRectMake(recordBtnEdge,selfFrame.size.height-recordBtnEdge-recordBtnSize,recordBtnSize,recordBtnSize)
+        let recordFrame = CGRectMake(recordBtnEdge,selfFrame.size.height-recordBtnEdge-recordBtnSize,recordBtnSize,recordBtnSize)
         recordBtn.frame = recordFrame
         recordBtn.setImage(UIImage (named:"record"), forState: UIControlState.Normal)
         recordBtn.addTarget(self, action: "onRecordBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         self.addSubview(recordBtn)
         
         //添加分享按钮
-        var shareBtn = UIButton()
-        var shareFrame = CGRectMake(selfFrame.size.width-recordBtnSize-recordBtnEdge,selfFrame.size.height-recordBtnEdge-recordBtnSize,recordBtnSize,recordBtnSize)
+        let shareBtn = UIButton()
+        let shareFrame = CGRectMake(selfFrame.size.width-recordBtnSize-recordBtnEdge,selfFrame.size.height-recordBtnEdge-recordBtnSize,recordBtnSize,recordBtnSize)
         shareBtn.frame = shareFrame
         shareBtn.setImage(UIImage (named:"share"), forState: UIControlState.Normal)
         shareBtn.addTarget(self, action: "onShareBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
@@ -121,8 +120,8 @@ class PurposeItemView: UIView {
         if(membCount>0){
             angle = angle/CGFloat(membCount!)
         }
-        println("centerX is \(centerPoint.x),centerY is \(centerPoint.y)")
-        println("radius is \(radius)")
+        print("centerX is \(centerPoint.x),centerY is \(centerPoint.y)")
+        print("radius is \(radius)")
         var startAngle:CGFloat = 180.0     //开始角度 180.0,是第一个成员（创建者）在左水平位置
         for (var i=0;i<membCount;i++) {
             /*圆点坐标：(x0,y0)
@@ -133,7 +132,7 @@ class PurposeItemView: UIView {
             y1   =   y0   +   r   *   sin(ao   *   3.14   /180   )
             */
             let membCenterP:CGPoint = CGPoint(x:radius*cos(startAngle*pi/180)+centerPoint.x,y:radius*sin(startAngle*pi/180)+centerPoint.y)
-            var membBtn:UIButton = UIButton(frame: CGRect(origin: CGPoint(x: membCenterP.x-membBtnSize/2.0, y: membCenterP.y-membBtnSize/2.0), size: CGSize(width: membBtnSize, height: membBtnSize)))
+            let membBtn:UIButton = UIButton(frame: CGRect(origin: CGPoint(x: membCenterP.x-membBtnSize/2.0, y: membCenterP.y-membBtnSize/2.0), size: CGSize(width: membBtnSize, height: membBtnSize)))
 //            membBtn.setImage(UIImage (named:"share"), forState: UIControlState.Normal)
             membBtn.setBackgroundImage(UIImage (named: "share"), forState: UIControlState.Normal)
             membBtn.setTitle("\(i)", forState: UIControlState.Normal)
@@ -142,13 +141,29 @@ class PurposeItemView: UIView {
             membBtn.addTarget(self, action: "onMemberBtnClick:", forControlEvents: UIControlEvents.TouchUpInside)
             self.addSubview(membBtn)
             
-            println("startAngle is \(startAngle)")
-            println("membCenterP is \(membCenterP)")
-            println("membBtn frame is \(membBtn.frame)")
+            //在成员和动作按钮之前添加连线
+            self.addLineBetweenMemberAndAction(membCenterP, aCenter: centerPoint)
+            
+            print("startAngle is \(startAngle)")
+            print("membCenterP is \(membCenterP)")
+            print("membBtn frame is \(membBtn.frame)")
             
             startAngle += angle;
         }
         
+    }
+    
+    func addLineBetweenMemberAndAction(mCenter:CGPoint,aCenter:CGPoint){
+//        CGContextSetLineCap(UIGraphicsGetCurrentContext(), kCGLineCapRound);
+//        CGContextSetLineWidth(UIGraphicsGetCurrentContext(), 15.0);  //线宽
+//        CGContextSetAllowsAntialiasing(UIGraphicsGetCurrentContext(), YES);
+//        CGContextSetRGBStrokeColor(UIGraphicsGetCurrentContext(), 1.0, 0.0, 0.0, 1.0);  //颜色
+//        CGContextBeginPath(UIGraphicsGetCurrentContext());
+//        CGContextMoveToPoint(UIGraphicsGetCurrentContext(), 100, 100);  //起点坐标
+//        CGContextAddLineToPoint(UIGraphicsGetCurrentContext(), 200, 100);   //终点坐标
+//        CGContextStrokePath(UIGraphicsGetCurrentContext());
+//        imageView.image=UIGraphicsGetImageFromCurrentImageContext();
+//        UIGraphicsEndImageContext();
     }
     
     func onActionBtnClick(){

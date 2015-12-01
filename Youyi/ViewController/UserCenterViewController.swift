@@ -22,7 +22,7 @@ class UserCenterVC: JBaseViewController,UITableViewDataSource,UITableViewDelegat
     }
     
     func addUserInfo(){
-        var tableView = UITableView (frame: CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, CONTENT_HEIGHT), style: UITableViewStyle.Grouped)
+        let tableView = UITableView (frame: CGRectMake(0, NAVBAR_HEIGHT, SCREEN_WIDTH, CONTENT_HEIGHT), style: UITableViewStyle.Grouped)
         tableView.dataSource = self
         tableView.delegate = self
         self.view.addSubview(tableView)
@@ -45,8 +45,7 @@ class UserCenterVC: JBaseViewController,UITableViewDataSource,UITableViewDelegat
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cellIdentifier:String = "identify"
-        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier) as? UITableViewCell
-        
+        var cell:UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)        
         if cell==nil{
             cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: cellIdentifier)
         }
